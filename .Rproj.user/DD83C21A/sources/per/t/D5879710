@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1579800431028.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1816515325",
+    "id" : "D5879710",
+    "lastKnownWriteTime" : 1579800768,
+    "last_content_update" : 1579800768082,
+    "path" : "~/GitHub/data_viz_R_workshop/02-worksheet-graphics.Rmd",
+    "project_path" : "02-worksheet-graphics.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "291,21",
+        "scrollLine" : "280",
+        "source_window_id" : "wlv24w2dxun6c"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

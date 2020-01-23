@@ -1,97 +1,97 @@
 Month,crime_type,n
-2017-01,Anti-social behaviour,7344
-2017-01,Burglary,2964
-2017-01,Criminal damage and arson,3317
-2017-01,Other theft,1957
-2017-01,Public order,2637
-2017-01,Shoplifting,1489
-2017-01,Vehicle crime,2390
-2017-01,Violence and sexual offences,7245
-2017-02,Anti-social behaviour,6873
-2017-02,Burglary,2633
-2017-02,Criminal damage and arson,3213
-2017-02,Other theft,1957
-2017-02,Public order,2738
-2017-02,Shoplifting,1590
-2017-02,Vehicle crime,2572
-2017-02,Violence and sexual offences,6789
-2017-03,Anti-social behaviour,7707
-2017-03,Burglary,2941
-2017-03,Criminal damage and arson,3406
-2017-03,Other theft,2234
-2017-03,Public order,3380
-2017-03,Shoplifting,1810
-2017-03,Vehicle crime,2771
-2017-03,Violence and sexual offences,8252
-2017-04,Anti-social behaviour,8651
-2017-04,Burglary,2761
-2017-04,Criminal damage and arson,3744
-2017-04,Other theft,2015
-2017-04,Public order,3495
-2017-04,Shoplifting,1614
-2017-04,Vehicle crime,2338
-2017-04,Violence and sexual offences,7688
-2017-05,Anti-social behaviour,8262
-2017-05,Burglary,2578
-2017-05,Criminal damage and arson,3735
-2017-05,Other theft,2162
-2017-05,Public order,3891
-2017-05,Shoplifting,1589
-2017-05,Vehicle crime,2572
-2017-05,Violence and sexual offences,8472
-2017-06,Anti-social behaviour,7321
-2017-06,Burglary,2794
-2017-06,Criminal damage and arson,3281
-2017-06,Other theft,2168
-2017-06,Public order,4836
-2017-06,Shoplifting,1458
-2017-06,Vehicle crime,2413
-2017-06,Violence and sexual offences,9400
-2017-07,Anti-social behaviour,6347
-2017-07,Burglary,2902
-2017-07,Criminal damage and arson,3522
-2017-07,Other theft,2371
-2017-07,Public order,5426
-2017-07,Shoplifting,1417
-2017-07,Vehicle crime,2575
-2017-07,Violence and sexual offences,10026
-2017-08,Anti-social behaviour,6284
-2017-08,Burglary,2856
-2017-08,Criminal damage and arson,3659
-2017-08,Other theft,2202
-2017-08,Public order,4930
-2017-08,Shoplifting,1480
-2017-08,Vehicle crime,2678
-2017-08,Violence and sexual offences,8898
-2017-09,Anti-social behaviour,5110
-2017-09,Burglary,2692
-2017-09,Criminal damage and arson,3307
-2017-09,Other theft,2100
-2017-09,Public order,4444
-2017-09,Shoplifting,1234
-2017-09,Vehicle crime,2818
-2017-09,Violence and sexual offences,8504
-2017-10,Anti-social behaviour,6540
-2017-10,Burglary,2685
-2017-10,Criminal damage and arson,3727
-2017-10,Other theft,2164
-2017-10,Public order,4630
-2017-10,Shoplifting,1465
-2017-10,Vehicle crime,2815
-2017-10,Violence and sexual offences,9124
-2017-11,Anti-social behaviour,5417
-2017-11,Burglary,2774
-2017-11,Criminal damage and arson,3500
-2017-11,Other theft,2087
-2017-11,Public order,4223
-2017-11,Shoplifting,1427
-2017-11,Vehicle crime,2786
-2017-11,Violence and sexual offences,8645
-2017-12,Anti-social behaviour,4980
-2017-12,Burglary,2454
-2017-12,Criminal damage and arson,3162
-2017-12,Other theft,2007
-2017-12,Public order,3627
-2017-12,Shoplifting,1291
-2017-12,Vehicle crime,2348
-2017-12,Violence and sexual offences,8775
+1,Anti-social behaviour,7344
+1,Burglary,2964
+1,Criminal damage and arson,3317
+1,Other theft,1957
+1,Public order,2637
+1,Shoplifting,1489
+1,Vehicle crime,2390
+1,Violence and sexual offences,7245
+2,Anti-social behaviour,6873
+2,Burglary,2633
+2,Criminal damage and arson,3213
+2,Other theft,1957
+2,Public order,2738
+2,Shoplifting,1590
+2,Vehicle crime,2572
+2,Violence and sexual offences,6789
+3,Anti-social behaviour,7707
+3,Burglary,2941
+3,Criminal damage and arson,3406
+3,Other theft,2234
+3,Public order,3380
+3,Shoplifting,1810
+3,Vehicle crime,2771
+3,Violence and sexual offences,8252
+4,Anti-social behaviour,8651
+4,Burglary,2761
+4,Criminal damage and arson,3744
+4,Other theft,2015
+4,Public order,3495
+4,Shoplifting,1614
+4,Vehicle crime,2338
+4,Violence and sexual offences,7688
+5,Anti-social behaviour,8262
+5,Burglary,2578
+5,Criminal damage and arson,3735
+5,Other theft,2162
+5,Public order,3891
+5,Shoplifting,1589
+5,Vehicle crime,2572
+5,Violence and sexual offences,8472
+6,Anti-social behaviour,7321
+6,Burglary,2794
+6,Criminal damage and arson,3281
+6,Other theft,2168
+6,Public order,4836
+6,Shoplifting,1458
+6,Vehicle crime,2413
+6,Violence and sexual offences,9400
+7,Anti-social behaviour,6347
+7,Burglary,2902
+7,Criminal damage and arson,3522
+7,Other theft,2371
+7,Public order,5426
+7,Shoplifting,1417
+7,Vehicle crime,2575
+7,Violence and sexual offences,10026
+8,Anti-social behaviour,6284
+8,Burglary,2856
+8,Criminal damage and arson,3659
+8,Other theft,2202
+8,Public order,4930
+8,Shoplifting,1480
+8,Vehicle crime,2678
+8,Violence and sexual offences,8898
+9,Anti-social behaviour,5110
+9,Burglary,2692
+9,Criminal damage and arson,3307
+9,Other theft,2100
+9,Public order,4444
+9,Shoplifting,1234
+9,Vehicle crime,2818
+9,Violence and sexual offences,8504
+10,Anti-social behaviour,6540
+10,Burglary,2685
+10,Criminal damage and arson,3727
+10,Other theft,2164
+10,Public order,4630
+10,Shoplifting,1465
+10,Vehicle crime,2815
+10,Violence and sexual offences,9124
+11,Anti-social behaviour,5417
+11,Burglary,2774
+11,Criminal damage and arson,3500
+11,Other theft,2087
+11,Public order,4223
+11,Shoplifting,1427
+11,Vehicle crime,2786
+11,Violence and sexual offences,8645
+12,Anti-social behaviour,4980
+12,Burglary,2454
+12,Criminal damage and arson,3162
+12,Other theft,2007
+12,Public order,3627
+12,Shoplifting,1291
+12,Vehicle crime,2348
+12,Violence and sexual offences,8775
