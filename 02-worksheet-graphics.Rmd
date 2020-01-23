@@ -288,8 +288,9 @@ monthly_df <- read_csv(file = "https://github.com/langtonhugh/data_viz_R_worksho
 ```
 
 ```{r, out.width="1200px"}
-ggplot(data = monthly_df, aes(x = Month, y = n, group = crime_type, colour = crime_type)) +
-  geom_line(size = 2)
+ggplot(data = monthly_df, aes(x = as.factor(Month), y = n, group = crime_type, colour = crime_type)) +
+  geom_line() +
+  geom_point()
 ```
 
 ### Facet
