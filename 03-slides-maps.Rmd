@@ -1,0 +1,76 @@
+---
+title: "Data visualisation in R <br> using crime data"
+subtitle: "Sam Langton"
+date: "5 February 2019"
+# output: beamer_presentation
+output:
+  xaringan::moon_reader:
+    incremental: true
+    css: ["default", "my_theme.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: false
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Welcome
+
+```{r, echo=FALSE, out.width="150px"}
+knitr::include_graphics("https://pbs.twimg.com/profile_images/866718054989930496/1JnqmEAe_400x400.jpg")
+```
+
+@sh_langton
+
+<br>
+
+All materials for today are available [online](https://github.com/langtonhugh/data_viz_workshop).
+
+Link: https://github.com/langtonhugh/data_viz_workshop
+
+</br>
+
+
+---
+
+## Contents
+
+**11.15-11.45**
+
+- Intro to data viz
+- ggplot2
+
+**11.45-12.15**
+
+- Live demo
+
+**12.15-13.00**
+
+- Exercise
+- Own data
+
+**13.00-14.00**
+
+- Lunch
+
+---
+
+## Contents
+
+**14.00-15.00**
+
+- Intro to spatial viz
+- Live demo
+
+**15.00-15.15**
+
+- Coffee
+
+**15.15-16.00**
+
+- Exercise
+- Own data

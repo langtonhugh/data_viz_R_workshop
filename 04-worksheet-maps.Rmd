@@ -1,0 +1,21 @@
+---
+title: "Data visualisation in R"
+author: "Sam Langton"
+date: "5 February 2019"
+output:
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2); library(readr)
+```
+
+## Preamble
+
+The page contains the course material for a workshop hosted jointly between the [University of Manchester](https://www.methods.manchester.ac.uk/) and the [UK Data Service](https://ukdataservice.ac.uk/). All material and associated scripts are available on [GitHub](https://github.com/langtonhugh/data_viz_workshop).
+
+## Background
+
+
