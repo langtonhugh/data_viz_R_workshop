@@ -95,7 +95,8 @@ ggplot(data = lsoa.crime.imd) +
 
 month.crime <- full.crime %>% 
   group_by(Month, crime_type) %>% 
-  tally()
+  tally() %>% 
+  filter(n > 1000)
 
 # Line graph
 ggplot(data = month.crime, aes(x = Month, y = n,
@@ -160,13 +161,13 @@ ggplot(data = manc.crime.sf) +
 # Save data 
 
 # LSOA IMD df
-write_csv(x = lsoa.crime.imd, path = "C:/Users/langt/Documents/GitHub/data_viz_workshop/data/gmp_2017.csv")
+write_csv(x = lsoa.crime.imd, path = "C:/Users/langt/Documents/GitHub/data_viz_R_workshop/data/gmp_2017.csv")
 
 # Monthly data
-write_csv(x = month.crime, path = "C:/Users/langt/Documents/GitHub/data_viz_workshop/data/gmp_monthly_2017.csv")
+write_csv(x = month.crime, path = "C:/Users/langt/Documents/GitHub/data_viz_R_workshop/data/gmp_monthly_2017.csv")
 
 # Point sf data
-st_write(obj = full.crime.sf, dsn = "C:/Users/langt/Documents/GitHub/data_viz_workshop/data/burglary_incidents.shp")
+st_write(obj = full.crime.sf, dsn = "C:/Users/langt/Documents/GitHub/data_viz_R_workshop/data/burglary_incidents.shp")
 
 # LSOA sf data
-st_write(obj = manc.crime.sf, dsn = "C:/Users/langt/Documents/GitHub/data_viz_workshop/data/burglary_lsoa.shp")
+st_write(obj = manc.crime.sf, dsn = "C:/Users/langt/Documents/GitHub/data_viz_R_workshop/data/burglary_lsoa.shp")

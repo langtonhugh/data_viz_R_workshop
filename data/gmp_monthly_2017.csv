@@ -1,169 +1,97 @@
 Month,crime_type,n
 2017-01,Anti-social behaviour,7344
-2017-01,Bicycle theft,345
 2017-01,Burglary,2964
 2017-01,Criminal damage and arson,3317
-2017-01,Drugs,324
-2017-01,Other crime,513
 2017-01,Other theft,1957
-2017-01,Possession of weapons,130
 2017-01,Public order,2637
-2017-01,Robbery,477
 2017-01,Shoplifting,1489
-2017-01,Theft from the person,538
 2017-01,Vehicle crime,2390
 2017-01,Violence and sexual offences,7245
 2017-02,Anti-social behaviour,6873
-2017-02,Bicycle theft,284
 2017-02,Burglary,2633
 2017-02,Criminal damage and arson,3213
-2017-02,Drugs,410
-2017-02,Other crime,547
 2017-02,Other theft,1957
-2017-02,Possession of weapons,200
 2017-02,Public order,2738
-2017-02,Robbery,438
 2017-02,Shoplifting,1590
-2017-02,Theft from the person,540
 2017-02,Vehicle crime,2572
 2017-02,Violence and sexual offences,6789
 2017-03,Anti-social behaviour,7707
-2017-03,Bicycle theft,347
 2017-03,Burglary,2941
 2017-03,Criminal damage and arson,3406
-2017-03,Drugs,383
-2017-03,Other crime,623
 2017-03,Other theft,2234
-2017-03,Possession of weapons,171
 2017-03,Public order,3380
-2017-03,Robbery,492
 2017-03,Shoplifting,1810
-2017-03,Theft from the person,577
 2017-03,Vehicle crime,2771
 2017-03,Violence and sexual offences,8252
 2017-04,Anti-social behaviour,8651
-2017-04,Bicycle theft,408
 2017-04,Burglary,2761
 2017-04,Criminal damage and arson,3744
-2017-04,Drugs,388
-2017-04,Other crime,525
 2017-04,Other theft,2015
-2017-04,Possession of weapons,200
 2017-04,Public order,3495
-2017-04,Robbery,523
 2017-04,Shoplifting,1614
-2017-04,Theft from the person,528
 2017-04,Vehicle crime,2338
 2017-04,Violence and sexual offences,7688
 2017-05,Anti-social behaviour,8262
-2017-05,Bicycle theft,495
 2017-05,Burglary,2578
 2017-05,Criminal damage and arson,3735
-2017-05,Drugs,380
-2017-05,Other crime,575
 2017-05,Other theft,2162
-2017-05,Possession of weapons,196
 2017-05,Public order,3891
-2017-05,Robbery,502
 2017-05,Shoplifting,1589
-2017-05,Theft from the person,481
 2017-05,Vehicle crime,2572
 2017-05,Violence and sexual offences,8472
 2017-06,Anti-social behaviour,7321
-2017-06,Bicycle theft,456
 2017-06,Burglary,2794
 2017-06,Criminal damage and arson,3281
-2017-06,Drugs,393
-2017-06,Other crime,632
 2017-06,Other theft,2168
-2017-06,Possession of weapons,236
 2017-06,Public order,4836
-2017-06,Robbery,547
 2017-06,Shoplifting,1458
-2017-06,Theft from the person,462
 2017-06,Vehicle crime,2413
 2017-06,Violence and sexual offences,9400
 2017-07,Anti-social behaviour,6347
-2017-07,Bicycle theft,459
 2017-07,Burglary,2902
 2017-07,Criminal damage and arson,3522
-2017-07,Drugs,398
-2017-07,Other crime,746
 2017-07,Other theft,2371
-2017-07,Possession of weapons,284
 2017-07,Public order,5426
-2017-07,Robbery,524
 2017-07,Shoplifting,1417
-2017-07,Theft from the person,483
 2017-07,Vehicle crime,2575
 2017-07,Violence and sexual offences,10026
 2017-08,Anti-social behaviour,6284
-2017-08,Bicycle theft,429
 2017-08,Burglary,2856
 2017-08,Criminal damage and arson,3659
-2017-08,Drugs,343
-2017-08,Other crime,662
 2017-08,Other theft,2202
-2017-08,Possession of weapons,248
 2017-08,Public order,4930
-2017-08,Robbery,557
 2017-08,Shoplifting,1480
-2017-08,Theft from the person,432
 2017-08,Vehicle crime,2678
 2017-08,Violence and sexual offences,8898
 2017-09,Anti-social behaviour,5110
-2017-09,Bicycle theft,393
 2017-09,Burglary,2692
 2017-09,Criminal damage and arson,3307
-2017-09,Drugs,345
-2017-09,Other crime,599
 2017-09,Other theft,2100
-2017-09,Possession of weapons,230
 2017-09,Public order,4444
-2017-09,Robbery,535
 2017-09,Shoplifting,1234
-2017-09,Theft from the person,457
 2017-09,Vehicle crime,2818
 2017-09,Violence and sexual offences,8504
 2017-10,Anti-social behaviour,6540
-2017-10,Bicycle theft,397
 2017-10,Burglary,2685
 2017-10,Criminal damage and arson,3727
-2017-10,Drugs,410
-2017-10,Other crime,645
 2017-10,Other theft,2164
-2017-10,Possession of weapons,212
 2017-10,Public order,4630
-2017-10,Robbery,548
 2017-10,Shoplifting,1465
-2017-10,Theft from the person,628
 2017-10,Vehicle crime,2815
 2017-10,Violence and sexual offences,9124
 2017-11,Anti-social behaviour,5417
-2017-11,Bicycle theft,356
 2017-11,Burglary,2774
 2017-11,Criminal damage and arson,3500
-2017-11,Drugs,591
-2017-11,Other crime,612
 2017-11,Other theft,2087
-2017-11,Possession of weapons,236
 2017-11,Public order,4223
-2017-11,Robbery,647
 2017-11,Shoplifting,1427
-2017-11,Theft from the person,751
 2017-11,Vehicle crime,2786
 2017-11,Violence and sexual offences,8645
 2017-12,Anti-social behaviour,4980
-2017-12,Bicycle theft,211
 2017-12,Burglary,2454
 2017-12,Criminal damage and arson,3162
-2017-12,Drugs,408
-2017-12,Other crime,543
 2017-12,Other theft,2007
-2017-12,Possession of weapons,208
 2017-12,Public order,3627
-2017-12,Robbery,625
 2017-12,Shoplifting,1291
-2017-12,Theft from the person,594
 2017-12,Vehicle crime,2348
 2017-12,Violence and sexual offences,8775

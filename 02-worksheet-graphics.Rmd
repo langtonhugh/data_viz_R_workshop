@@ -112,7 +112,7 @@ Now you have the basics sorted, let's move onto some more advanced examples usin
 First, let's load in some real crime data that we can use to practice `ggplot2`. We are going to use some [open police recorded crime data](https://data.police.uk/about/) for 2017, along with associated data about [deprivation](https://census.ukdataservice.ac.uk/get-data/related/deprivation.aspx), for neighbourhoods Greater Manchester. These neighbourhoods are defined at [Lower Super Output Areas](https://census.ukdataservice.ac.uk/use-data/guides/boundary-data.aspx). The data (a .csv file) can be loaded into your R environment directly using the URL from a [GitHub](https://github.com/langtonhugh/data_viz_workshop) page. We are assigning to an object called `burglary_df`, but you can call it something else if you'd like.
 
 ```{r, warning=F, message=F}
-burglary_df <-  read_csv(file = "https://raw.githubusercontent.com/langtonhugh/data_viz_workshop/master/data/gmp_2017.csv")
+burglary_df <-  read_csv(file = "https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/gmp_2017.csv")
 ```
 
 As noted earlier, it is important to be familiar with your data and its structure before attempting anything in `ggplot2`. Take a look using `View(burglary_df)` and consider exploring how R is treating each variable using `class()` e.g. `class(burglary_df$IMDscore)`. We can that there are number of variables:
@@ -161,7 +161,6 @@ Feel free to try other palettes out.
 
 **Colour blind palettes**
 
-<<<<<<< HEAD
 A note that is relevant to anyone working in the field of data visualisation is on colour blindness. If you are creating graphics for presentations, reports or papers, the chances are that someone reading them will have some form of [colour vision deficiency](https://www.nhs.uk/conditions/colour-vision-deficiency/), which affects 1 in 12 men, and 1 in 200 women. It might leave many readers unable to differentiate between different colours on your graphic. Fortunately, there are packages in R which address this. The package [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) contains a number of palettes which are easier to interpret for people with colour blindness. This package is integrated into `ggplot`. Instead of the standard colour (or fill) brewer used above, one can use a viridis-specific scale. For instance, to replicate the graph above, using the default viridis palette for a discrete variable (LAname) you could run the below code chunk.
 
 ```{r}
@@ -175,9 +174,8 @@ Just like with the default brewer, viridis has a number of different palettes. Y
 ### Sizes and transparency
 
 Alterations can be made to the visual appearance of geometries within the geometry layer, in this case, `geom_point()`. These include things like size, transparency and thickness, depending on what geometry we are using. To increase the size of points, and make them transparent, we can use the `size` and `alpha` arguments. The default for `size` is 1, so anything lower (e.g. 0.5) will make points smaller, and anything larger (e.g. 10) will make points bigger. The default for `alpha` is also 1, which specifies absolute opaqueness, so you can only go lower, to make things less opaque (more transparent).
-=======
+
 Alterations can be made to the visual appearance of geometries, in this case, `geom_point()`. These include things like size, transparency and thickness, depending on what geometry we are using. To increase the size of points, and make them transparent, we can use the `size` and `alpha` arguments. The default for size is 1, so anything lower (e.g. 0.5) will make points smaller, and anything larger (e.g. 10) will make points bigger. The default for alpha is also 1, which specifies absolute opaqueness, so you can only go lower, to make things less opaque.
->>>>>>> 38bda821f6f7bad8414a2dc295e9953cfd4f1965
 
 ```{r, warning=F, message=F}
 ggplot(data = burglary_df, mapping = aes(x = incscore, y = burglary_count, colour = LAname)) +
@@ -185,8 +183,6 @@ ggplot(data = burglary_df, mapping = aes(x = incscore, y = burglary_count, colou
     scale_colour_brewer(palette = "Spectral") 
 ```
 
-
-<<<<<<< HEAD
 Note that in making these tweaks to the visual appearance of geometries, _we have not specified them as aesthetics_, even though `size` and `alpha` could be used as aesthetics (i.e. changing the size of point according to a variable, or changing the transparency according to a variable). In other words, the `size` and `alpha` arguments have been made outside of `aes()`. This is because we are making changes to the general visual appearance of the point geometry, rather changing the size or alpha according to a variable in our data frame. Anything specified within `aes()` should be a variable in your data! One of the most common mistakes in `ggplot2` code is to accidentally try and map variables outside of the `aes()` argument.
 
 What would you expect to happen if you placed `size` within `aes()` in relation to a variable, such as `size = LAname`? What happens if you tried to map it to a variable _outside_ of the aesthetic argument? Try it out and see what happens. Again, don't be scared of errors or weird outputs: it's a good way to learn what does what.
@@ -231,17 +227,12 @@ So far, we've only explored scatter plots. Let's take a quick look at some other
 ### Histogram
 
 Whilst creating a scatter plot needs two existing variables, mapped to the x and y axis, some `ggplot` geometries perform calculations in the background. [Histograms](https://www.mathsisfun.com/data/histograms.html), for instance, visualise the distribution of a variable by creating bins and counting the number of values in each one. The `geom_histogram()` geometry will do this automatically, and thus you only need to specify the x aesthetic. The y axis (count) is being generated for us. The appearance of histograms, and thus the conclusions drawn from the visual, is sensitive to the number of bins, so it is worth investigating several options before settling on a number. Let's take a look at _IMDscore_, the overall score indicating the level of deprivation in each neighbourhood.
-=======
+
 Note that in making these tweaks to the visual apparence of geometries, **we have not specified them as aesthetics**. This is because we are making changes to the general visual appearance of the point geometry, rather changing the size or alpha according to a variable in our data frame. Anything specified within `aes()` should be a variable in your data!
 
 What would you expect to happen if you placed `size` inside `aes()` in relation to a variable, such as `size = LAname`? Try it out and see what happens. Again, don't be scared of errors or weird outputs - it's a good way to learn what does what.
 
-## Labels
-
-## Built-in themes
-
 ## Geom examples
->>>>>>> 38bda821f6f7bad8414a2dc295e9953cfd4f1965
 
 ```{r}
 ggplot(data = burglary_df) +
@@ -288,17 +279,11 @@ ggplot(data = burglary_df) +
   geom_bar(mapping = aes(x = as.factor(IMDdeci), fill = LAname), position = "dodge")
 ```
 
-<<<<<<< HEAD
 Another way you can explore such things is through a facet.
 
 ### Facet
 
 Sometimes it's useful to generate different plots for each level of a factor, rather than trying to portray lots of information in one graphic. This is where the `facet_wrap()` layer is especially useful. Returning to our scatter plot from earlier, we coloured each point by Local Authority, which generated lots of information, and led to many points overlapping one another. An alternative would be to facet the scatter plot 'by' (using `~`) Local Authority.
-=======
-## Facets
-
-Different types of geometry: density with facet
->>>>>>> 38bda821f6f7bad8414a2dc295e9953cfd4f1965
 
 ```{r}
 ggplot(data = burglary_df) +
@@ -306,13 +291,12 @@ ggplot(data = burglary_df) +
   facet_wrap(~LAname)
 ```
 
-<<<<<<< HEAD
 How might we use a facet to explore the distribution of IMD deciles by Local Authority, as an alternative to the `position = "dodge"` argument used earlier?
 
 ### Lines
 
 ```{r, warning=F, message=F}
-monthly_df <- read_csv("https://github.com/langtonhugh/data_viz_workshop/raw/master/data/gmp_monthly_2017.csv")
+monthly_df <- read_csv(file = "https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/gmp_monthly_2017.csv")
 ```
 
 ```{r}
@@ -320,10 +304,7 @@ ggplot(data = monthly_df, aes(x = Month, y = n, group = crime_type, colour = cri
   geom_line()
 ```
 
-## Customise themes
-=======
 ## Customised themes
->>>>>>> 38bda821f6f7bad8414a2dc295e9953cfd4f1965
 
 The fantastic thing about `ggplot` is that you can create high-quality graphics with only a few lines of code. This is especially useful for the purposes of data exploration, when you quickly want to view a distribution or identify outliers. You can even get pretty far with existing themes such as `theme_bw()`, used earlier, to change the visual appearance of the graphic. For many people, this is more than enough to achieve the desired result. However, when it comes to publications or presentations, you might get a bit more picky. What about font size, backgrounds colours, and axis breaks? This is where the `theme()` layer of the `ggplot2` comes in handy.
 
@@ -403,7 +384,7 @@ If you want to expand on the default themes, without these extra tweaks, there a
 
 Once you've created a handful of `ggplot` graphics, you may want to arrange them on a page or a poster. So far, we've just been plotting them directly one-by-one. There are a number of ways 
 
-```{r, echo=FALSE, fig.align= "center", fig.width="150px", fig.cap="Source: [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)"}
+```{r, echo=FALSE, fig.align= "center", out.width="150px", fig.cap="Source: [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)"}
 knitr::include_graphics("img/cow.png")
 ```
 
