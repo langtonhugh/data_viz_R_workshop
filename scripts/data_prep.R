@@ -96,9 +96,9 @@ ggplot(data = lsoa.crime.imd) +
 month.crime <- full.crime %>% 
   group_by(Month, crime_type) %>% 
   tally() %>% 
+  ungroup() %>% 
   filter(n > 1000,
          crime_type != "Shoplifting" | crime_type != "Other theft") %>% 
-  ungroup() %>% 
   mutate(Month = as.factor(recode(Month,
     `2017-01` = "1",
     `2017-02` = "2",
