@@ -226,19 +226,15 @@ So far, we've only explored scatter plots. Let's take a quick look at some other
 
 ### Histogram
 
-Whilst creating a scatter plot needs two existing variables, mapped to the x and y axis, some `ggplot` geometries perform calculations in the background. [Histograms](https://www.mathsisfun.com/data/histograms.html), for instance, visualise the distribution of a variable by creating bins and counting the number of values in each one. The `geom_histogram()` geometry will do this automatically, and thus you only need to specify the x aesthetic. The y axis (count) is being generated for us. The appearance of histograms, and thus the conclusions drawn from the visual, is sensitive to the number of bins, so it is worth investigating several options before settling on a number. Let's take a look at _IMDscore_, the overall score indicating the level of deprivation in each neighbourhood.
+Whilst creating a scatter plot needs two existing variables, mapped to the x and y axis, some `ggplot` geometries perform calculations in the background. [Histograms](https://www.mathsisfun.com/data/histograms.html), for instance, visualise the distribution of a variable by creating bins and counting the number of values in each one. The `geom_histogram()` geometry will do this automatically, and thus you only need to specify the x aesthetic. The y axis (count) is being generated for us.Let's take a look at _IMDscore_, the overall score indicating the level of deprivation in each neighbourhood.
 
-Note that in making these tweaks to the visual apparence of geometries, **we have not specified them as aesthetics**. This is because we are making changes to the general visual appearance of the point geometry, rather changing the size or alpha according to a variable in our data frame. Anything specified within `aes()` should be a variable in your data!
-
-What would you expect to happen if you placed `size` inside `aes()` in relation to a variable, such as `size = LAname`? Try it out and see what happens. Again, don't be scared of errors or weird outputs - it's a good way to learn what does what.
-
-## Geom examples
-
-```{r}
+```{r, warning=F, message=F}
 ggplot(data = burglary_df) +
-  geom_histogram(mapping = aes(x = IMDscore), bins = 60)
+  geom_histogram(mapping = aes(x = IMDscore))
 ```
 
+The appearance of histograms, and thus the conclusions drawn from the visual, is sensitive to the number of bins, so it is worth investigating several options before settling on a number. You'll notice that `ggplot` gives you a warning if you don't specify it yourself. You can mess around with the `bins` argument within `geom_histogram()` if you'd like to explore this, remembering that such an argument should go _outside_ of `aes()`!
+ 
 ### Density with groups
 
 Another way of visualising the distribution of a variable is a [density graph](https://www.data-to-viz.com/graph/density.html). This eliminates the need to decide on a number of bins. You can try this out now quickly, simply by switching the above geometry to `geom_density()` and removing the `bins` argument. This demonstrates, just like the histogram, that the distribution is right-skewed.
@@ -349,9 +345,11 @@ The above code chunk includes _a lot_ of information, but it includes only a han
 
 **Saving themes**
 
-The above demonstrates the power of `theme()` but the thought of copying this code for each visual you create is not very appealing. A straightforward way of re-using themes is to assign them to an object, then you can add them to the end of your `ggplot` code like any other theme. The below code chunk uses the same theme as above, but assigns it to an object called `my_theme` and then adds it to a new density plot using some of the skills we learnt earlier. Notice that now, when we want to make small changes, like removing the legend, we only have a very small theme section following `my_theme`. Carefully written themes have blanket use for all your graphs!
+The above demonstrates the power of `theme()` but the thought of copying this code for each visual you create is not very appealing. A straightforward way of re-using themes is to assign them to an object, then you can add them to the end of your `ggplot` code like any other theme. Do this now. Your code will be largely similar to the chunk above, but instead you want to assign all your extra theme code to an object. It look something like `my_theme <- theme_minimal() + theme(...)` but obviously make sure you include all your options, not just `...`!
 
-```{r out.width="900px"}
+The following generates a new graph, using some of the skills we've used already, but with this new dark theme we've created tagged on to the end. Notice that now, when we want to make small changes, like in this case removing the legend, we only have a very small theme section following the addition of `my_theme` (or whatever you've called it).
+
+```{r, echo = F}
 my_theme <- theme_minimal() +
       theme(axis.ticks   = element_blank(),
             plot.title   = element_text(colour = "white", size = 10, family = "mono"),
@@ -366,7 +364,10 @@ my_theme <- theme_minimal() +
             panel.background = element_rect(fill = "grey12", colour = "grey12"),
             plot.background = element_rect(fill = "grey12"),
             panel.border = element_blank())
+```
 
+
+```{r, out.width="900px"}
 ggplot(data = burglary_df) +
   geom_density(mapping = aes(x = IMDscore, fill = LAname), colour = "transparent") +
   scale_fill_viridis_d() +
@@ -375,17 +376,42 @@ ggplot(data = burglary_df) +
   theme(legend.position = "none")
 ```
 
-The folks over at [Trafford Data Lab](https://www.trafforddatalab.io/) wrote a useful [blog](https://medium.com/@traffordDataLab/developing-a-data-visualisation-style-cd24f88fa59) about how to develop your own data visualisation style, and save themes as functions to be re-used.
+The folks over at [Trafford Data Lab](https://www.trafforddatalab.io/) wrote a useful [blog](https://medium.com/@traffordDataLab/developing-a-data-visualisation-style-cd24f88fa59) about how to develop your own data visualisation style, and save themes as functions to be re-used. Many people even post their [custom themes](https://gist.github.com/jslefche/eff85ef06b4705e6efbc) online which you can use as a base to develop your own.
 
-If you want to expand on the default themes, without these extra tweaks, there are also a number of [packages](https://www.shanelynn.ie/themes-and-colours-for-r-ggplots-with-ggthemr/) which contain more off-the-shelf themes too.
+If you want to expand on the default themes, without these extra tweaks, there are also a number of [packages](https://www.shanelynn.ie/themes-and-colours-for-r-ggplots-with-ggthemr/) which contain more off-the-shelf themes.
 
 ## Arranging graphics
 
-Once you've created a handful of `ggplot` graphics, you may want to arrange them on a page or a poster. So far, we've just been plotting them directly one-by-one. There are a number of ways 
+Once you've created a handful of `ggplot` graphics, you may want to arrange them on a page, presentation or poster. So far, we've just been plotting them directly one-by-one. There are a number of ways you can do this in R, but an increasingly popular way is to use [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html). It contains a function called `plot_grid()` which allows you to arrange graphics (`ggplot` objects, but also images and text) according to your preferences.
 
-```{r, echo=FALSE, fig.align= "center", out.width="150px", fig.cap="Source: [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)"}
+Make sure you have the package installed using `install.packages("cowplot")` and then load it using `library(cowplot)` as you have previously for other packages.
+
+```{r, echo=FALSE, fig.align= "center", out.width="150px", fig.cap="Source: [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)", message=F, warning=F}
 knitr::include_graphics("img/cow.png")
+library(cowplot)
 ```
+
+Let's first assign some basic graphics to objects. by way of an example. The below assumes that you have loaded in our two example data sets! Remember that you may have names your objects differently to me.
+
+```{r}
+bar_gg <- ggplot(data = burglary_df) +
+  geom_bar(mapping = aes(x = as.factor(IMDdeci), fill = as.factor(IMDdeci))) +
+  scale_fill_brewer(palette = "Spectral") +
+  theme(legend.position = "none")
+
+density_gg <- ggplot(data = burglary_df) +
+  geom_density(mapping = aes(x = IMDscore, fill = LAname)) +
+  facet_wrap(~LAname) +
+  theme(legend.position = "none")
+```
+
+We can then arrange these plots using `plot_grid()` and a few optional extra arguments.
+
+```{r, out.width="900px"}
+plot_grid(bar_gg, density_gg, nrow = 1, labels = c("(a)", "(b)"), scale = c(0.9,0.9), rel_widths = c(1,1.3))
+```
+
+There a number of useful arguments within the function which you can use to tailor these arrangements, in terms of things like label names and figure widths. You can even use your customised themes on `cowplot` arrangements in the same way we have earlier. Feel free to explore it more using the excellent [documentation](https://wilkelab.org/cowplot/articles/plot_grid.html) the authors have made available online.
 
 ## Saving graphics
 
