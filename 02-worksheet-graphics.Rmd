@@ -288,7 +288,7 @@ monthly_df <- read_csv(file = "https://github.com/langtonhugh/data_viz_R_worksho
 ```
 
 ```{r, out.width="1200px"}
-ggplot(data = monthly_df, aes(x = as.factor(Month), y = n, group = crime_type, colour = crime_type)) +
+ggplot(data = monthly_df, aes(x = as.factor(Month), y = n, group = crime_type, linetype = crime_type)) +
   geom_line() +
   geom_point()
 ```
@@ -326,7 +326,7 @@ So far, we've been using the built-in themes like `theme_bw()` or `theme_classic
 
 To edit things even further, we can use `theme()`. There are [countless](https://ggplot2.tidyverse.org/reference/theme.html#arguments) arguments within the theme function which change things like axis ticks, axis positioning, font sizes and grid colours. You can even use these additional options in concert with the built-in themes. Here, we're going to make all our tweaks _after_ applying `theme_minimal()` because this gives us a clean slate to work with. You don't have to do this, but it might save a bit of manual tinkering later on.
 
-You might have noticed that [I am a fan of black themes](https://theconversation.com/even-the-most-beautiful-maps-can-be-misleading-126474) for data visualisations. Why? Because they are awesome. With that in mind, let's try and make our scatter plot using a black theme. Each line has been commented to explain what each bit of code is doing.
+You might have noticed that [I am a fan of dark themes](https://theconversation.com/even-the-most-beautiful-maps-can-be-misleading-126474) for data visualisations. Why? Because they are awesome. With that in mind, let's try and make our scatter plot using a dark theme. Each line has been commented to explain what each bit of code is doing.
 
 ```{r, out.width="900px"}
 p1 + theme_minimal() +
@@ -349,7 +349,7 @@ The above code chunk includes _a lot_ of information, but it includes only a han
 
 **Saving themes**
 
-The above demonstrates the power of `theme()` but the thought of copying this code for each visual you create is not very appealing. A straightforward way of re-using themes is to assign them to an object, then you can add them to the end of your `ggplot` code like any other theme. The below code chunk uses a the theme as above, but assigns it to an object called `my_theme` and then adds it to a new density plot using some of the skills we learnt earlier. Notice that now, when we want to make small changes, like removing the legend, we only have a very small theme section following `my_theme`. Carefully written themes have blanket use for all your graphs!
+The above demonstrates the power of `theme()` but the thought of copying this code for each visual you create is not very appealing. A straightforward way of re-using themes is to assign them to an object, then you can add them to the end of your `ggplot` code like any other theme. The below code chunk uses the same theme as above, but assigns it to an object called `my_theme` and then adds it to a new density plot using some of the skills we learnt earlier. Notice that now, when we want to make small changes, like removing the legend, we only have a very small theme section following `my_theme`. Carefully written themes have blanket use for all your graphs!
 
 ```{r out.width="900px"}
 my_theme <- theme_minimal() +
@@ -369,8 +369,6 @@ my_theme <- theme_minimal() +
 
 ggplot(data = burglary_df) +
   geom_density(mapping = aes(x = IMDscore, fill = LAname), colour = "transparent") +
-  labs(title = "Density of neighbourhood deprivation by Local Authority",
-       x = "IMD score") +
   scale_fill_viridis_d() +
   facet_wrap(~LAname) +
   my_theme +

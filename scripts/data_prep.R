@@ -98,7 +98,8 @@ month.crime <- full.crime %>%
   tally() %>% 
   ungroup() %>% 
   filter(n > 1000,
-         crime_type != "Shoplifting" | crime_type != "Other theft") %>% 
+         crime_type != "Shoplifting",
+         crime_type != "Other theft") %>% 
   mutate(Month = as.factor(recode(Month,
     `2017-01` = "1",
     `2017-02` = "2",
@@ -113,6 +114,8 @@ month.crime <- full.crime %>%
     `2017-11` = "11",
     `2017-12` = "12")
   ))
+
+table(month.crime$crime_type)
 
 month.crime$Month <- factor(month.crime$Month, levels = c("1",
                                                "2",
