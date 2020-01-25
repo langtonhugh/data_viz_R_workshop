@@ -161,7 +161,7 @@ Feel free to try other palettes out.
 
 **Colour blind palettes**
 
-A note that is relevant to anyone working in the field of data visualisation is on colour blindness. If you are creating graphics for presentations, reports or papers, the chances are that someone reading them will have some form of [colour vision deficiency](https://www.nhs.uk/conditions/colour-vision-deficiency/), which affects 1 in 12 men, and 1 in 200 women. It might leave many readers unable to differentiate between different colours on your graphic. Fortunately, there are packages in R which address this. The package [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) contains a number of palettes which are easier to interpret for people with colour blindness. This package is integrated into `ggplot`. Instead of the standard colour (or fill) brewer used above, one can use a viridis-specific scale. For instance, to replicate the graph above, using the default viridis palette for a discrete variable (LAname) you could run the below code chunk.
+A note that is relevant to anyone working in the field of data visualisation is on colour blindness. If you are creating graphics for presentations, reports or papers, the chances are that someone reading them will have some form of [colour vision deficiency](https://www.nhs.uk/conditions/colour-vision-deficiency/), which affects 1 in 12 men, and 1 in 200 women. It might leave many readers unable to differentiate between different colours on your graphic. Fortunately, there are packages in R which address this. The package [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) contains a number of palettes which are easier to interpret for people with colour blindness. This package is integrated into ggplot. Instead of the standard colour (or fill) brewer used above, one can use a viridis-specific scale. For instance, to replicate the graph above, using the default viridis palette for a discrete variable (LAname) you could run the below code chunk.
 
 ```{r}
 ggplot(data = burglary_df, mapping = aes(x = incscore, y = burglary_count, colour = LAname)) +
@@ -222,18 +222,18 @@ Not bad, right? Try out some of the [other themes](https://ggplot2.tidyverse.org
 
 ## Geom examples
 
-So far, we've only explored scatter plots. Let's take a quick look at some other geometries, and with it, some of the other aesthetics available. This list is not exhaustive! There are fantastic [resources](https://www.trafforddatalab.io/graphics_companion/) online which list the staple geometries. But, this section will cover the fundamentals of `ggplot` and equip you with the skills needed to get you out there creating your own graphics!
+So far, we've only explored scatter plots. Let's take a quick look at some other geometries, and with it, some of the other aesthetics available. This list is not exhaustive! There are fantastic [resources](https://www.trafforddatalab.io/graphics_companion/) online which list the staple geometries. But, this section will cover the fundamentals of ggplot and equip you with the skills needed to get you out there creating your own graphics!
 
 ### Histogram
 
-Whilst creating a scatter plot needs two existing variables, mapped to the x and y axis, some `ggplot` geometries perform calculations in the background. [Histograms](https://www.mathsisfun.com/data/histograms.html), for instance, visualise the distribution of a variable by creating bins and counting the number of values in each one. The `geom_histogram()` geometry will do this automatically, and thus you only need to specify the x aesthetic. The y axis (count) is being generated for us.Let's take a look at _IMDscore_, the overall score indicating the level of deprivation in each neighbourhood.
+Whilst creating a scatter plot needs two existing variables, mapped to the x and y axis, some ggplot geometries perform calculations in the background. [Histograms](https://www.mathsisfun.com/data/histograms.html), for instance, visualise the distribution of a variable by creating bins and counting the number of values in each one. The `geom_histogram()` geometry will do this automatically, and thus you only need to specify the x aesthetic. The y axis (count) is being generated for us.Let's take a look at _IMDscore_, the overall score indicating the level of deprivation in each neighbourhood.
 
 ```{r, warning=F, message=F}
 ggplot(data = burglary_df) +
   geom_histogram(mapping = aes(x = IMDscore))
 ```
 
-The appearance of histograms, and thus the conclusions drawn from the visual, is sensitive to the number of bins, so it is worth investigating several options before settling on a number. You'll notice that `ggplot` gives you a warning if you don't specify it yourself. You can mess around with the `bins` argument within `geom_histogram()` if you'd like to explore this, remembering that such an argument should go _outside_ of `aes()`!
+The appearance of histograms, and thus the conclusions drawn from the visual, is sensitive to the number of bins, so it is worth investigating several options before settling on a number. You'll notice that ggplot gives you a warning if you don't specify it yourself. You can mess around with the `bins` argument within `geom_histogram()` if you'd like to explore this, remembering that such an argument should go _outside_ of `aes()`!
  
 ### Density with groups
 
@@ -257,14 +257,14 @@ What happens if you use the `colour` aesthetic instead of `fill`, like we did fo
 
 ### Bar
 
-A common descriptive visual is a bar plot to explore the count distribution of categorical variables. In our data, we might want to know the number of neighbourhods falling into each IMD (deprivation) decile, a key indicator of criminality. As noted earlier, the structure of your data is integral to using `ggplot` effectively. You can take a look at the counts per decile manually using `table(burglary_df$IMDdeci)` but these figures don't actually exist within the `burglary_df` object. Rather than creating a new data frame object to make a bar plot from scratch, you can let `ggplot` calculate these frequencies for you in the background, just by specifying the x axis.
+A common descriptive visual is a bar plot to explore the count distribution of categorical variables. In our data, we might want to know the number of neighbourhods falling into each IMD (deprivation) decile, a key indicator of criminality. As noted earlier, the structure of your data is integral to using ggplot effectively. You can take a look at the counts per decile manually using `table(burglary_df$IMDdeci)` but these figures don't actually exist within the `burglary_df` object. Rather than creating a new data frame object to make a bar plot from scratch, you can let ggplot calculate these frequencies for you in the background, just by specifying the x axis.
 
 ```{r}
 ggplot(data = burglary_df) +
   geom_bar(mapping = aes(x = as.factor(IMDdeci)))  # convert IMDdeci to a factor on-the-fly
 ```
 
-Note that we treat the decile variable as a factor for this plot. This is not strictly necessary, but you will notice that otherwise `ggplot` treats it as a continuous variable, because it's class is numeric. This makes the default x axis values somewhat misleading, because it includes non-integer values (e.g. 7.5), which are not possible. Alternatively, you could convert `IMDdeci` to a factor beforehand using `mutate`. 
+Note that we treat the decile variable as a factor for this plot. This is not strictly necessary, but you will notice that otherwise ggplot treats it as a continuous variable, because it's class is numeric. This makes the default x axis values somewhat misleading, because it includes non-integer values (e.g. 7.5), which are not possible. Alternatively, you could convert `IMDdeci` to a factor beforehand using `mutate`. 
 
 ### Bar with groups
 
@@ -285,7 +285,7 @@ There has been an increasing movement towards longitudinal studies in criminolog
 monthly_df <- read_csv(file = "https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/gmp_monthly_2017.csv")
 ```
 
-Take a few moments to explore the structure of this data. You'll notice that it's in long-format. Even though we have 12-months worth of data, we only have one month variable (rather than each being spread across 12 columns). Generally speaking, `ggplot` likes data in long-format, because it allows us to specify the aesthetics (e.g. x and y axis) easily.
+Take a few moments to explore the structure of this data. You'll notice that it's in long-format. Even though we have 12-months worth of data, we only have one month variable (rather than each being spread across 12 columns). Generally speaking, ggplot likes data in long-format, because it allows us to specify the aesthetics (e.g. x and y axis) easily.
 
 Here, we're going to the plot these counts over time, to show the longitudinal trends of different crime types over the course of the year using `geom_line()`. Intuitively, we want the time variable `month` running along the x-axis, and the counts on the y-axis. To show each crime type seperately, we're going to use the `group` aesthetic, and introduce a new aesthetic called `linetype`, which uses different patterns for each group. To clearly show our time measurements points, we also add `geom_point()`. This demonstrates a point we made earlier about how everything within the `ggplot()` function gets passed into subsequent layers, saving us a bit of effort, and making our code cleaner.
 
@@ -309,7 +309,7 @@ How might we use a facet to explore the distribution of IMD deciles by Local Aut
 
 ## Customised themes
 
-The fantastic thing about `ggplot` is that you can create high-quality graphics with only a few lines of code. This is especially useful for the purposes of data exploration, when you quickly want to view a distribution or identify outliers. You can even get pretty far with existing themes such as `theme_bw()`, used earlier, to change the visual appearance of the graphic. For many people, this is more than enough to achieve the desired result. However, when it comes to publications or presentations, you might get a bit more picky. What about font size, backgrounds colours, and axis breaks? This is where the `theme()` layer of the `ggplot2` comes in handy.
+The fantastic thing about ggplot is that you can create high-quality graphics with only a few lines of code. This is especially useful for the purposes of data exploration, when you quickly want to view a distribution or identify outliers. You can even get pretty far with existing themes such as `theme_bw()`, used earlier, to change the visual appearance of the graphic. For many people, this is more than enough to achieve the desired result. However, when it comes to publications or presentations, you might get a bit more picky. What about font size, backgrounds colours, and axis breaks? This is where the `theme()` layer of the `ggplot2` comes in handy.
 
 Let's take our scatter plot from the beginning of this worksheet. This time, create an object called `p1` (or whatever you'd like) so that we don't keep having to re-run the same code. Executing `p1` will plot the contents of the object i.e. your graphic, but it also means you can add layers and edits to the existing graphic simply by using `+` as we have previously. We'll do this from now on, just to save repeating too much code.
 
@@ -351,7 +351,7 @@ The above code chunk includes _a lot_ of information, but it includes only a han
 
 **Saving themes**
 
-The above demonstrates the power of `theme()` but the thought of copying this code for each visual you create is not very appealing. A straightforward way of re-using themes is to assign them to an object, then you can add them to the end of your `ggplot` code like any other theme. Do this now. Your code will be largely similar to the chunk above, but instead you want to assign all your extra theme code to an object. It look something like `my_theme <- theme_minimal() + theme(...)` but obviously make sure you include all your options, not just `...`!
+The above demonstrates the power of `theme()` but the thought of copying this code for each visual you create is not very appealing. A straightforward way of re-using themes is to assign them to an object, then you can add them to the end of your ggplot code like any other theme. Do this now. Your code will be largely similar to the chunk above, but instead you want to assign all your extra theme code to an object. It look something like `my_theme <- theme_minimal() + theme(...)` but obviously make sure you include all your options, not just `...`!
 
 The following generates a new graph, using some of the skills we've used already, but with this new dark theme we've created tagged on to the end. Notice that now, when we want to make small changes, like in this case removing the legend, we only have a very small theme section following the addition of `my_theme` (or whatever you've called it).
 
@@ -388,7 +388,7 @@ If you want to expand on the default themes, without these extra tweaks, there a
 
 ## Arranging graphics
 
-Once you've created a handful of `ggplot` graphics, you may want to arrange them on a page, presentation or poster. So far, we've just been plotting them directly one-by-one. There are a number of ways you can do this in R, but an increasingly popular way is to use [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html). It contains a function called `plot_grid()` which allows you to arrange graphics (`ggplot` objects, but also images and text) according to your preferences.
+Once you've created a handful of ggplot graphics, you may want to arrange them on a page, presentation or poster. So far, we've just been plotting them directly one-by-one. There are a number of ways you can do this in R, but an increasingly popular way is to use [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html). It contains a function called `plot_grid()` which allows you to arrange graphics (ggplot objects, but also images and text) according to your preferences.
 
 Make sure you have the package installed using `install.packages("cowplot")` and then load it using `library(cowplot)` as you have previously for other packages.
 
@@ -432,7 +432,5 @@ We're going to save `p1` using some example specifications to my local drive. Re
 ```{r}
 ggsave(plot = p1, path = "visuals", filename = "/my_plot.png", device = "png", width = 16, height = 12, units = "cm", dpi = 100)
 ```
-
-
 
 
