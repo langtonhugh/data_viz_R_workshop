@@ -222,7 +222,7 @@ Not bad, right? Try out some of the [other themes](https://ggplot2.tidyverse.org
 
 ## Geom examples
 
-So far, we've only explored scatter plots. Let's take a quick look at some other geometries, and with it, some of the other aesthetics available. This list is not exhaustive! But it will cover some key points to help you get started.
+So far, we've only explored scatter plots. Let's take a quick look at some other geometries, and with it, some of the other aesthetics available. This list is not exhaustive! There are fantastic [resources](https://www.trafforddatalab.io/graphics_companion/) online which list the staple geometries. But, this section will cover the fundamentals of `ggplot` and equip you with the skills needed to get you out there creating your own graphics!
 
 ### Histogram
 
@@ -277,11 +277,17 @@ ggplot(data = burglary_df) +
 
 Another way you can explore such things is through a facet, which is covered below.
 
-### Lines
+### Lines with groups
+
+There has been an increasing movement towards longitudinal studies in criminology and criminal justice research. With that comes a demand for effective ways of visualising change over time. A staple graphic for showcasing developmental trends are line graphs. First, let's load in some new data which contains crime counts by month for the year 2017 in Greater Manchester.
 
 ```{r, warning=F, message=F}
 monthly_df <- read_csv(file = "https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/gmp_monthly_2017.csv")
 ```
+
+Take a few moments to explore the structure of this data. You'll notice that it's in long-format. Even though we have 12-months worth of data, we only have one month variable (rather than each being spread across 12 columns). Generally speaking, `ggplot` likes data in long-format, because it allows us to specify the aesthetics (e.g. x and y axis) easily.
+
+Here, we're going to the plot these counts over time, to show the longitudinal trends of different crime types over the course of the year using `geom_line()`. Intuitively, we want the time variable `month` running along the x-axis, and the counts on the y-axis. To show each crime type seperately, we're going to use the `group` aesthetic, and introduce a new aesthetic called `linetype`, which uses different patterns for each group. To clearly show our time measurements points, we also add `geom_point()`. This demonstrates a point we made earlier about how everything within the `ggplot()` function gets passed into subsequent layers, saving us a bit of effort, and making our code cleaner.
 
 ```{r, out.width="1200px"}
 ggplot(data = monthly_df, aes(x = as.factor(Month), y = n, group = crime_type, linetype = crime_type)) +
@@ -391,7 +397,7 @@ knitr::include_graphics("img/cow.png")
 library(cowplot)
 ```
 
-Let's first assign some basic graphics to objects. by way of an example. The below assumes that you have loaded in our two example data sets! Remember that you may have names your objects differently to me.
+Let's first assign some basic graphics to objects. by way of an example. The below assumes that you have loaded in our two example data sets! Remember that you may have names your objects differently to me. Feel free to use your own graphics for this.
 
 ```{r}
 bar_gg <- ggplot(data = burglary_df) +
@@ -405,16 +411,28 @@ density_gg <- ggplot(data = burglary_df) +
   theme(legend.position = "none")
 ```
 
-We can then arrange these plots using `plot_grid()` and a few optional extra arguments.
+We can then arrange these plots using `plot_grid()` and a few optional extra arguments which specify the number of rows, labels, scale and relative width of each graphic.
 
 ```{r, out.width="900px"}
 plot_grid(bar_gg, density_gg, nrow = 1, labels = c("(a)", "(b)"), scale = c(0.9,0.9), rel_widths = c(1,1.3))
 ```
 
+If you want to explore `cowplot` a bit more, try sketching out an 'ideal' visualisation arrangement on a piece of a paper. This could be a poster or an assortment of plots for a research report. Make some example plots using the skills above, and then try creating this visualisation using `plot_grid()`.
+
 There a number of useful arguments within the function which you can use to tailor these arrangements, in terms of things like label names and figure widths. You can even use your customised themes on `cowplot` arrangements in the same way we have earlier. Feel free to explore it more using the excellent [documentation](https://wilkelab.org/cowplot/articles/plot_grid.html) the authors have made available online.
 
 ## Saving graphics
 
-This is how to save a ggplot object.
+Once you've made your visualisations, you might be tempted to simply copy and paste things out of R from with the zoom plot window, or use the manual 'Export' tab. For many people, this will suffice, but if you want full control over your outputs, and want to make things fully reproducible, I would recommmend using the `ggsave()` function. This might appear laborious at first, but like many things we've done today, you will end up using the same code for many things, so it's worthwhile getting used to it!
+
+First, assign your visual to an object. Here, we'll make use of the object `p1` we made earlier, containing our scatter plot. If you haven't got this object in your environment, create one using your own plots, or go back to the _customised themes_ section and copy the code to create `p1`. The `ggsave()` function requires three basic arguments: the object you want to save, where you want to save it and the name of the output file. However, there are a number of additional arguments you will find useful, including  the format (e.g. png, tiff, pdf, svg), the width and height of the output (i.e. dimensions in inches, cm or mm), and the dpi (i.e. resolution). These arguments are especially useful when you have journals or clients with specific requirements.
+
+We're going to save `p1` using some example specifications to my local drive. Remember to change the `path` argument to fit your own computer!
+
+```{r}
+ggsave(plot = p1, path = "visuals", filename = "/my_plot.png", device = "png", width = 16, height = 12, units = "cm", dpi = 100)
+```
+
+
 
 
