@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "146535918",
+    "hash" : "0",
     "id" : "13F505FF",
-    "lastKnownWriteTime" : 1579975016,
-    "last_content_update" : 1579975016051,
+    "lastKnownWriteTime" : 1580030820,
+    "last_content_update" : 1580030820303,
     "path" : "~/GitHub/data_viz_R_workshop/04-worksheet-maps.Rmd",
     "project_path" : "04-worksheet-maps.Rmd",
     "properties" : {
-        "cursorPosition" : "2,15",
-        "scrollLine" : "0"
+        "cursorPosition" : "33,28",
+        "scrollLine" : "23"
     },
     "read_only" : false,
     "read_only_alternatives" : [

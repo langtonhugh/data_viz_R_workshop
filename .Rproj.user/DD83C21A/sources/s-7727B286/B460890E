@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580030658923.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B460890E",
+    "lastKnownWriteTime" : 7092432076515844131,
+    "last_content_update" : 1580030658923,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "FFC88D16",
+        "caption" : "full.crime.sf",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=full.crime.sf&cache_key=FFC88D16",
+        "displayedObservations" : 646,
+        "environment" : "",
+        "expression" : "full.crime.sf",
+        "object" : "full.crime.sf",
+        "preview" : 0,
+        "totalObservations" : 646,
+        "variables" : 8
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
