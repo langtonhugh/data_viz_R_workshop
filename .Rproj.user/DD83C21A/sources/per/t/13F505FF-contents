@@ -42,7 +42,7 @@ Taking some time to explore the data, you'll notice two variables called `latitu
 burg_records_sf <- st_as_sf(x = burg_records_df, coords = c(x = "Longitude", y = "Latitude"), crs = 4326)
 ```
 
-You will notice that we also specify a  Coordinate Reference System (CRS). This brings us to the topic of projections.
+You will notice that we also specify a  Coordinate Reference System (CRS). This brings us to the topic of projections and requires a little bit more explanation.
 
 ### Projections
 
@@ -80,7 +80,67 @@ Whilst the above might help us identify interesting patterns, point-level open c
 
 ### Area-based maps
 
-To demonstrate an area-based map using sf, we will return to our neighbourhood-level data on burglary counts, but this time only for Manchester. Remember, we defined our 'neighbourhoods' as [Lower Super Output Areas](https://census.ukdataservice.ac.uk/use-data/guides/boundary-data.aspx) (LSOA) which are extremely useful units of analysis due to their linkage with census data. First, we are going to download a [shapefile](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) containing the most recent LSOA boundaries for Manchester.
+To demonstrate an area-based map using sf, we will return to our neighbourhood-level data on burglary counts, but this time only for Manchester. Remember, we defined our 'neighbourhoods' as [Lower Super Output Areas](https://census.ukdataservice.ac.uk/use-data/guides/boundary-data.aspx) (LSOA) which are extremely useful units of analysis due to their linkage with census data. First, we are going to download a .zip folder containing the [shapefile](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) of the most recent LSOA boundaries for Manchester.
 
+You can download the .zip folder directly from the [GitHub](https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/manc_lsoa.zip) associated with this workshop. Save it to a local folder on your machine and ensure it is unzipped. If you feel comfortable enough, you can [download and unzip](https://stackoverflow.com/questions/3053833/using-r-to-download-zipped-data-file-extract-and-import-data) the file directly from within R, but this is not necessary.
+
+Once you have the folder downloaded and unzipped on your machine, you can load in the shapefile using `st_read()`, assigning the output to a new object. Please remember that you will need to alter the working directory below with your own!
+
+```{r, warning=F, message=F}
+manc_sf <- st_read(dsn = "data/burglary_lsoa.shp")
+```
+
+Once you've loaded this into your R environment, you will get a brief summary of the data. One of these includes a note on the projection. At the moment, our data does not have any EPSG code associated with it, but we can assign one to ensure it is identical to the point-level data we used earlier (WGS 84) using `st_transform()`.
+
+```{r}
+manc_sf <- st_transform(manc_sf, 4326)
+```
+
+You will notice using `View(manc_sf)` that we have a number of variables at LSOA-level, including the burglary counts and deprivation measures, just as we had this morning, as well as the `gemometry` column, which defines the boundaries of each neighbourhood. Once again, we can take a look at this geometry using a quick bit of ggplot code.
+
+```{r, out.width="900px"}
+ggplot(data = manc_sf) +
+  geom_sf()
+```
+
+And yes, you guessed it, we can colour each polygon (i.e. unit, LSOA) according to a variable using the `aesthetics` argument. Let's take a look at the distribution of burglary, with some tweaks to make the graphic more complete,
+
+```{r, out.width="900px"}
+ggplot(data = manc_sf) +
+  geom_sf(mapping = aes(fill = brglry_)) +
+  scale_fill_continuous(low = "snow", high = "red") +
+  labs(title = "Burglary concentrations in Manchester",
+       fill = "count") +
+  theme_bw()
+```
+
+Discrete (categorical) variables can be visualised similarly (again, not much difference from this morning!). Let's take a look at the deprivation deciles.
+
+```{r, out.width="900px"}
+ggplot(data = manc_sf) +
+  geom_sf(mapping = aes(fill = as.factor(IMDdeci))) +
+  scale_fill_viridis_d(option = "magma") +
+  labs(title = "Deprivation deciles in Manchester",
+       caption = "Contains OS data / crime data from www.police.uk",
+       fill = "decile") +
+  theme_bw() 
+```
 
 ### Overlaying maps
+
+You might remember at the very beginning of the day, when covering the framework of ggplot code, the idea that the same thing can be achieved with different code. When overlaying different sf objects on top of one another, this proves especially useful. Here, we want to plot the point-level burglary locations on top of a basic outline of neighbourhoods in Manchester, to give a frame of reference. In such a circumstance, we first lay down at empty `ggplot()` function, and then subsequently add our maps, which are contained in different sf objects. Be careful which order you do things in! If you put `manc_sf` second, it will just obscure the points, unless you specify the fill as transparent.
+
+```{r, out.width="900px"}
+ggplot() +
+  geom_sf(data = manc_sf) +
+  geom_sf(data = burg_records_sf, size = 0.5, col = "red")
+
+```
+
+It's handy to know that the following would produce a similar result, although you will notice that boundaries themselves will cover the points.
+
+```{r, eval = F}
+ggplot() +
+  geom_sf(data = burg_records_sf, size = 0.5, col = "red") +
+  geom_sf(data = manc_sf, fill = "transparent") 
+```
