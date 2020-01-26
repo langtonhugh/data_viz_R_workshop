@@ -5,17 +5,17 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3193607147",
+    "hash" : "1963807521",
     "id" : "13F505FF",
-    "lastKnownWriteTime" : 1580031674,
-    "last_content_update" : 1580031674734,
+    "lastKnownWriteTime" : 1580053601,
+    "last_content_update" : 1580053601775,
     "path" : "~/GitHub/data_viz_R_workshop/04-worksheet-maps.Rmd",
     "project_path" : "04-worksheet-maps.Rmd",
     "properties" : {
         "chunk_output_type" : "console",
-        "cursorPosition" : "38,99",
-        "last_setup_crc32" : "7727B286c0c0b715",
-        "scrollLine" : "23"
+        "cursorPosition" : "78,560",
+        "last_setup_crc32" : "",
+        "scrollLine" : "69"
     },
     "read_only" : false,
     "read_only_alternatives" : [
