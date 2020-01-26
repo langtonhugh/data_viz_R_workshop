@@ -150,7 +150,7 @@ full.crime.df <- full.crime.raw %>%
   rename(LSOAcode = `LSOA code`,
          crime_type = `Crime type`,
          outcome = `Last outcome category`) %>% 
-  left_join(lsoa.la.names) #%>% 
+  left_join(lsoa.la.names) %>% 
   filter(LAname == "Manchester")
 
   # st_as_sf(coords = c(x = "Longitude", y = "Latitude"), crs = 4326)
