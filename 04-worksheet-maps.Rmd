@@ -86,7 +86,7 @@ You can download the .zip folder directly from the [GitHub](https://github.com/l
 
 Once you have the folder downloaded and unzipped on your machine, you can load in the shapefile using `st_read()`, assigning the output to a new object. Please remember that you will need to alter the working directory below with your own!
 
-```{r, warning=F, message=F}
+```{r, warning=F, message=F, results=F}
 manc_sf <- st_read(dsn = "data/burglary_lsoa.shp")
 ```
 
@@ -144,3 +144,13 @@ ggplot() +
   geom_sf(data = burg_records_sf, size = 0.5, col = "red") +
   geom_sf(data = manc_sf, fill = "transparent") 
 ```
+
+## Resources
+
+- As discussed, [_Geocomputation in R_](https://geocompr.robinlovelace.net/) is a comprehensive book covering all manner of spatial skills in R using `sf`. It is available for free online but you can also buy a [paper copy](https://www.amazon.com/Geocomputation-Chapman-Hall-Robin-Lovelace/dp/1138304514).
+
+- _An Introduction to R for Spatial Analysis and Mapping_ is a useful resource. The [second edition](https://www.amazon.co.uk/dp/1526428504/) focuses on `sf`. 
+
+- At the [2019 useR!](http://www.user2019.fr/) conference, there was a 1-day workshop on spatial and spatiotemporal data analysis in R. [The material is freely available online](https://github.com/edzer/UseR2019). Clicking on the 'materials' hyperlinks will take you to the worksheets for the morning and afternoon sessions.
+
+- Twitter is a good resource for keeping up-to-date with things. There are many people, but following [Robin Lovelace](https://twitter.com/robinlovelace), [Jakub Nowosad](https://twitter.com/jakub_nowosad), [Angela Li](https://twitter.com/CivicAngela) and [Edzer Pebesma](https://twitter.com/edzerpebesma) will give you a good start.
