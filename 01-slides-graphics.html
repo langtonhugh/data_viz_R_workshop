@@ -12,7 +12,7 @@
 class: center, middle, inverse, title-slide
 
 # Data visualisation in R <br> using crime data
-## Sam Langton
+## Samuel Langton
 ### 5 February 2019
 
 ---
@@ -689,6 +689,75 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2, shape = var3)) +
 - ...
 
 &lt;img src="img/gg_examples.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Crime demo
+
+---
+
+## Maps in R
+
+&lt;img src="img/convo.jpg" width="500px" style="display: block; margin: auto;" /&gt;
+
+Source: [The Conversation](https://theconversation.com/even-the-most-beautiful-maps-can-be-misleading-126474)
+
+---
+
+## The good news...
+
+- Making a map in R is _very similar_ to what we have covered already.
+- Using `ggplot2` to create beatutiful maps is fairly straightforward, making use of an additional package `sf`.
+
+&lt;img src="img/sf.gif" width="300px" style="display: block; margin: auto;" /&gt;
+
+---
+
+## The bad news...
+
+- You might be entering unchartered territory!
+- Spatial visualisation necessitates some additional level of understanding in geography and Geographic Information Systems (GIS)
+  - Spatial data
+  - Projection
+  - Visualisation issues
+  
+---
+
+## The bad news: spatial data
+
+- Today, we will use shapefiles (`.shp`).
+- Shapefiles are a popular format to store geospatial vector data.
+- Unlike standard 2D data frames, such as .csv files, shapefiles contains multiple components.
+  - `.shp`
+  - `.shx`
+  - `.dbf`
+  - `.prj`
+- But there are other formats, such as _.geojson_ or _kml_, which you might come across.
+- There is some [debate](https://gis.stackexchange.com/questions/64909/which-data-formats-are-best-for-open-data-distribution) over the most appropriate, with each having their own advantages and disadvantages.
+
+---
+
+## The bad news: projections
+
+&lt;img src="img/qgisproj.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+Source: [QGIS](https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/coordinate_reference_systems.html).
+
+---
+
+## The bad news: visualisation issues
+
+&lt;img src="img/jr2.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+Source: [Jerry Ratcliffe](http://www.lifestudy.ac.uk/jdi/events/mapping-conf/conf-2004/conf2004-downloads/jerry-ten-mapping-tips.pdf)
+
+---
+
+## The bad news: visualisation issues
+
+&lt;img src="img/jr1.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+Source: [Jerry Ratcliffe](http://www.lifestudy.ac.uk/jdi/events/mapping-conf/conf-2004/conf2004-downloads/jerry-ten-mapping-tips.pdf)
 
 ---
 

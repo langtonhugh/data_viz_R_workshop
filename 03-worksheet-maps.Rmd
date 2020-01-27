@@ -80,7 +80,7 @@ Whilst the above might help us identify interesting patterns, point-level open c
 
 ### Area-based maps
 
-To demonstrate an area-based map using sf, we will return to our neighbourhood-level data on burglary counts, but this time only for Manchester. Remember, we defined our 'neighbourhoods' as [Lower Super Output Areas](https://census.ukdataservice.ac.uk/use-data/guides/boundary-data.aspx) (LSOA) which are extremely useful units of analysis due to their linkage with census data. First, we are going to download a .zip folder containing the [shapefile](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) of the most recent LSOA boundaries for Manchester.
+To demonstrate an area-based map using sf, we will return to our neighbourhood-level data on burglary counts, but this time only for Manchester. Remember, we defined our 'neighbourhoods' as [Lower Super Output Areas](https://census.ukdataservice.ac.uk/use-data/guides/boundary-data.aspx) (LSOA) which are extremely useful units of analysis due to their linkage with census data. You can download these boundaries (and a host of other spatial units) from the [UK Data Service](https://census.ukdataservice.ac.uk/get-data/boundary-data.aspx). Here, we are going to download a .zip folder containing the [shapefile](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) of the most recent LSOA boundaries for Manchester.
 
 You can download the .zip folder directly from the [GitHub](https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/manc_lsoa.zip) associated with this workshop. Save it to a local folder on your machine and ensure it is unzipped. If you feel comfortable enough, you can [download and unzip](https://stackoverflow.com/questions/3053833/using-r-to-download-zipped-data-file-extract-and-import-data) the file directly from within R, but this is not necessary.
 
@@ -133,7 +133,8 @@ You might remember at the very beginning of the day, when covering the framework
 ```{r, out.width="900px"}
 ggplot() +
   geom_sf(data = manc_sf) +
-  geom_sf(data = burg_records_sf, size = 0.5, col = "red")
+  geom_sf(data = burg_records_sf, size = 0.5, col = "red") +
+  theme_bw()
 
 ```
 
@@ -144,6 +145,8 @@ ggplot() +
   geom_sf(data = burg_records_sf, size = 0.5, col = "red") +
   geom_sf(data = manc_sf, fill = "transparent") 
 ```
+
+As an aside, you might notice that on the above maps, some neighbourhoods are much larger than others. This is because LSOAs are designed to be fairly uniform by resident populations, but some residential areas are more densely populated than others. Variation between the sizes of areas being mapped can be problematic, and sometimes even misleading, so it is worth considering this when creating maps for dissemination to the public or colleagues (or even yourself!). There are creative ways of mapping which can account for this, such as cartograms or regular grids. If you are interested in exploring these, there's a great package called [geogrid](https://github.com/jbaileyh/geogrid) for creating regular grids, and some [open code](http://rpubs.com/profrichharris/342278) from Richard Harris (University of Bristol) for cartograms and 'hexograms'.
 
 ## Resources
 

@@ -1,21 +1,21 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1580121023683.000,
+    "created" : 1580138383577.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "414267104",
-    "id" : "2FE16BAC",
+    "hash" : "0",
+    "id" : "BE41F995",
     "lastKnownWriteTime" : 1580123626,
-    "last_content_update" : 1580123626044,
+    "last_content_update" : 1580123626,
     "path" : "~/GitHub/data_viz_R_workshop/02-worksheet-graphics.Rmd",
     "project_path" : "02-worksheet-graphics.Rmd",
     "properties" : {
         "chunk_output_type" : "console",
-        "cursorPosition" : "386,0",
+        "cursorPosition" : "384,0",
         "scrollLine" : "375",
-        "source_window_id" : "wwgnvfpro82x7"
+        "source_window_id" : ""
     },
     "read_only" : false,
     "read_only_alternatives" : [
