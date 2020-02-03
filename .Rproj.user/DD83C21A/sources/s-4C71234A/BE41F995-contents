@@ -22,7 +22,7 @@ The page contains the course material for a workshop hosted jointly between the 
 
 Data visualisation is an accessible, aesthetically pleasing and powerful way to explore, analyse and convey complex information. As we have seen, the graphical representation of information is widely deployed by academics, journalists and researchers in public and private sector organisations. R is increasingly being used to create visualisations in criminology and criminal justice research. Today, we will learn the fundamentals of `ggplot2`, a package within the [tidyverse](https://www.tidyverse.org/), for making high-quality, reproducible graphics. This is one of the most popular packages in R, and for good reason! The package is based on the [grammer of graphics](https://vita.had.co.nz/papers/layered-grammar.html). As discussed during the lecture, a key component of this is the idea that graphics are made up for _layers_. Three of the most component layers in visualisations are the data, the aesthetics and the geometries.
 
-```{r, echo=FALSE, out.width = "300px", fig.align= "center", fig.cap="Source: [Skill Gaze](https://skillgaze.com/2017/10/31/understanding-different-visualization-layers-of-ggplot/)"}
+```{r, echo=FALSE, fig.align= "center", fig.cap="Source: [Skill Gaze](https://skillgaze.com/2017/10/31/understanding-different-visualization-layers-of-ggplot/)"}
 knitr::include_graphics("img/gg.png")
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: "Data visualisation in R"
-author: "Sam Langton"
+author: "Samuel Langton"
 date: "5 February 2019"
 output:
   html_document:
