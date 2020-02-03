@@ -30,7 +30,7 @@ knitr::include_graphics("https://pbs.twimg.com/profile_images/866718054989930496
 
 All materials for today are available online.
 
-Web link: https://rpubs.com/uofm_ukds
+Web link: https://rpubs.com/langton_
 
 Material: https://github.com/langtonhugh/data_viz_R_workshop
 
