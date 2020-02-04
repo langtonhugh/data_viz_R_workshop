@@ -26,6 +26,20 @@ knitr::include_graphics("https://pbs.twimg.com/profile_images/866718054989930496
 
 @sh_langton
 
+s.langton@mmu.ac.uk
+
+---
+
+## Welcome
+
+```{r, echo=FALSE, out.width="150px"}
+knitr::include_graphics("https://pbs.twimg.com/profile_images/866718054989930496/1JnqmEAe_400x400.jpg")
+```
+
+@sh_langton
+
+s.langton@mmu.ac.uk
+
 <br>
 
 All materials for today are available online.
@@ -475,7 +489,7 @@ kable(df1,align = "l", caption = "df1")
 
 ---
 
-## ggplot2: different geommetries
+## ggplot2: different geometries
 
 - geom_point()
 - geom_bar()
@@ -506,7 +520,7 @@ Source: [The Conversation](https://theconversation.com/even-the-most-beautiful-m
 ## The good news...
 
 - Making a map in R is _very similar_ to what we have covered already.
-- Using `ggplot2` to create beatutiful maps is fairly straightforward, making use of an additional package `sf`.
+- Using `ggplot2` to create beautiful maps is fairly straightforward, making use of an additional package `sf`.
 
 ```{r, out.width = "300px", echo=FALSE, fig.align= "center"}
 knitr::include_graphics("img/sf.gif")
@@ -516,7 +530,7 @@ knitr::include_graphics("img/sf.gif")
 
 ## The bad news...
 
-- You might be entering unchartered territory!
+- You might be entering uncharted territory!
 - Spatial visualisation necessitates some additional level of understanding in geography and Geographic Information Systems (GIS), including:
   - Spatial data
   - Projection

@@ -26,6 +26,18 @@ class: center, middle, inverse, title-slide
 
 @sh_langton
 
+s.langton@mmu.ac.uk
+
+---
+
+## Welcome
+
+&lt;img src="https://pbs.twimg.com/profile_images/866718054989930496/1JnqmEAe_400x400.jpg" width="150px" /&gt;
+
+@sh_langton
+
+s.langton@mmu.ac.uk
+
 &lt;br&gt;
 
 All materials for today are available online.
@@ -97,7 +109,7 @@ Material: https://github.com/langtonhugh/data_viz_R_workshop
 
 &lt;/center&gt;
 
-&lt;img src="./img/bbc1.png" width="600px" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/bbc1.png" width="600px" style="display: block; margin: auto;" /&gt;
 
 Source: [Medium](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535)
 
@@ -322,7 +334,7 @@ ggplot(data = df1)
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-19-1.png" width="320px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-20-1.png" width="320px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -390,7 +402,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2))
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-23-1.png" width="400px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-24-1.png" width="400px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -460,7 +472,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2)) +
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-27-1.png" width="400px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-28-1.png" width="400px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -579,7 +591,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2, colour = var3)) +
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-31-1.png" width="400px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-32-1.png" width="400px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -635,7 +647,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2, shape = var3)) +
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-34-1.png" width="400px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-35-1.png" width="400px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -682,7 +694,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2, shape = var3)) +
 
 ---
 
-## ggplot2: different geommetries
+## ggplot2: different geometries
 
 - geom_point()
 - geom_bar()
@@ -709,7 +721,7 @@ Source: [The Conversation](https://theconversation.com/even-the-most-beautiful-m
 ## The good news...
 
 - Making a map in R is _very similar_ to what we have covered already.
-- Using `ggplot2` to create beatutiful maps is fairly straightforward, making use of an additional package `sf`.
+- Using `ggplot2` to create beautiful maps is fairly straightforward, making use of an additional package `sf`.
 
 &lt;img src="img/sf.gif" width="300px" style="display: block; margin: auto;" /&gt;
 
@@ -717,7 +729,7 @@ Source: [The Conversation](https://theconversation.com/even-the-most-beautiful-m
 
 ## The bad news...
 
-- You might be entering unchartered territory!
+- You might be entering uncharted territory!
 - Spatial visualisation necessitates some additional level of understanding in geography and Geographic Information Systems (GIS), including:
   - Spatial data
   - Projection
