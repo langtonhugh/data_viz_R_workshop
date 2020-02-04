@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/571194/220dacbc32c2478c9e196404edd6981c
+bundleId: https://api.rpubs.com/api/v1/document/571194/220dacbc32c2478c9e196404edd6981c
+url: http://rpubs.com/langton_/571194
+when: 1580805040.09915

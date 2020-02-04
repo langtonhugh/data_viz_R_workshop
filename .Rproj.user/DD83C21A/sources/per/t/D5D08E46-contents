@@ -235,7 +235,7 @@ The appearance of histograms, and thus the conclusions drawn from the visual, is
  
 ### Density with groups
 
-Another way of visualising the distribution of a variable is a [density graph](https://www.data-to-viz.com/graph/density.html). This eliminates the need to decide on a number of bins. You can try this out now quickly, simply by switching the above geometry to `geom_density()` and removing the `bins` argument. This demonstrates, just like the histogram, that the distribution is right-skewed.
+Another way of visualising the distribution of a variable is a [density graph](https://www.data-to-viz.com/graph/density.html). This eliminates the need to decide on a number of bins. You can try this out now quickly, simply by switching the above geometry to `geom_density()` and removing any `bins` argument you might have added. This demonstrates, just like the histogram, that the distribution is right-skewed.
 
 But how does this distribution differ by Local Authority? We can show this with an additional aesthetic called `group`. It is particularly useful when we want to visualise a geometry for each level of a factor (i.e. each category of a categorical level). Let's add this to the basic density plot of deprivation.
 
@@ -244,7 +244,7 @@ ggplot(data = burglary_df) +
   geom_density(mapping = aes(x = IMDscore, group = LAname))
 ```
 
-Well, it has worked, but we haven't successfully differentiated between each Local Authority. Other aesthetics like `fill` group observations, but also fill each by colour. With a bit of tweaking to the transparency, we get a better idea about the distributions of each Local Authority.
+Well, it has worked, but we haven't successfully differentiated between each Local Authority. Other aesthetics like `fill` also group observations, but fill each by colour. With a bit of tweaking to the transparency, we get a better idea about the distributions of each Local Authority.
 
 ```{r}
 ggplot(data = burglary_df) +
@@ -262,11 +262,11 @@ ggplot(data = burglary_df) +
   geom_bar(mapping = aes(x = as.factor(IMDdeci)))  # convert IMDdeci to a factor on-the-fly
 ```
 
-Note that we treat the decile variable as a factor for this plot. This is not strictly necessary, but you will notice that otherwise ggplot treats it as a continuous variable, because it's class is numeric. This makes the default x axis values somewhat misleading, because it includes non-integer values (e.g. 7.5), which are not possible. Alternatively, you could convert `IMDdeci` to a factor beforehand using `mutate`. 
+Note that we treat the decile variable as a factor for this plot. This is not strictly necessary, but you will notice that otherwise ggplot treats it as a continuous variable, because it's class is numeric. This makes the default x axis values somewhat misleading, because it includes non-integer values (e.g. 7.5), which are not possible. Alternatively, you could convert `IMDdeci` to a factor beforehand.
 
 ### Bar with groups
 
-How might you explore the distribution of these deprivation deciles by Local Authority? There's a number of ways you could do this. One might be to fill the colour of each bar by Local Authority, and then arrange the bars side-by-side. You can do this using `fill` and a sneaky option called `position` whereby bars `dodge` one another.
+How might you explore the distribution of these deprivation deciles by Local Authority? There's a number of ways you could do this. One might be to fill the colour of each bar by Local Authority, and then arrange the bars side-by-side. You can do this using `fill` and a sneaky option called `position` whereby bars "dodge" one another.
 
 ```{r}
 ggplot(data = burglary_df) +
@@ -285,7 +285,7 @@ monthly_df <- read_csv(file = "https://github.com/langtonhugh/data_viz_R_worksho
 
 Take a few moments to explore the structure of this data. You'll notice that it's in long-format. Even though we have 12-months worth of data, we only have one month variable (rather than each being spread across 12 columns). Generally speaking, ggplot likes data in long-format, because it allows us to specify the aesthetics (e.g. x and y axis) easily.
 
-Here, we're going to the plot these counts over time, to show the longitudinal trends of different crime types over the course of the year using `geom_line()`. Intuitively, we want the time variable `month` running along the x-axis, and the counts on the y-axis. To show each crime type seperately, we're going to use the `group` aesthetic, and introduce a new aesthetic called `linetype`, which uses different patterns for each group. To clearly show our time measurements points, we also add `geom_point()`. This demonstrates a point we made earlier about how everything within the `ggplot()` function gets passed into subsequent layers, saving us a bit of effort, and making our code cleaner.
+Here, we're going to the plot these counts over time, to show the longitudinal trends of different crime types over the course of the year using `geom_line()`. Intuitively, we want the time variable `month` running along the x-axis, and the counts on the y-axis. To show each crime type separately, we're going to use the `group` aesthetic, and introduce a new aesthetic called `linetype`, which uses different patterns for each group. To clearly show our time measurements points, we also add `geom_point()`. This demonstrates a concept we made earlier about how everything within the `ggplot()` function gets passed into subsequent layers, saving us a bit of effort, and making our code cleaner.
 
 ```{r, out.width="1200px"}
 ggplot(data = monthly_df, aes(x = as.factor(Month), y = n, group = crime_type, linetype = crime_type)) +
@@ -307,7 +307,7 @@ How might we use a facet to explore the distribution of IMD deciles by Local Aut
 
 ## Customised themes
 
-The fantastic thing about ggplot is that you can create high-quality graphics with only a few lines of code. This is especially useful for the purposes of data exploration, when you quickly want to view a distribution or identify outliers. You can even get pretty far with existing themes such as `theme_bw()`, used earlier, to change the visual appearance of the graphic. For many people, this is more than enough to achieve the desired result. However, when it comes to publications or presentations, you might get a bit more picky. What about font size, backgrounds colours, and axis breaks? This is where the `theme()` layer of the `ggplot2` comes in handy.
+The fantastic thing about ggplot is that you can create high-quality graphics with only a few lines of code. This is especially useful for the purposes of data exploration, when you quickly want to view a distribution or identify outliers. You can even get pretty far with existing themes such as `theme_bw()`, used earlier, to change the visual appearance of the graphic. For many people, this is more than enough to achieve the desired result. However, when it comes to publications or presentations, you might get a bit more picky. What about font size, backgrounds colours, and axis ticks? This is where the `theme()` layer of the `ggplot2` comes in handy.
 
 Let's take our scatter plot from the beginning of this worksheet. This time, create an object called `p1` (or whatever you'd like) so that we don't keep having to re-run the same code. Executing `p1` will plot the contents of the object i.e. your graphic, but it also means you can add layers and edits to the existing graphic simply by using `+` as we have previously. We'll do this from now on, just to save repeating too much code.
 
@@ -350,7 +350,7 @@ The above code chunk includes _a lot_ of information, but it includes only a han
 
 **Saving themes**
 
-The above demonstrates the power of `theme()` but the thought of copying this code for each visual you create is not very appealing. A straightforward way of re-using themes is to assign them to an object, then you can add them to the end of your ggplot code like any other theme. Do this now. Your code will be largely similar to the chunk above, but instead you want to assign all your extra theme code to an object. It look something like `my_theme <- theme_minimal() + theme(...)` but obviously make sure you include all your options, not just `...`!
+The above demonstrates the power of `theme()` but the thought of copying this code for each visual you create is not very appealing. A straightforward way of re-using themes is to assign them to an object, then you can add them to the end of your ggplot code like any other theme. Do this now. Your code will be largely similar to the chunk above, but instead you want to assign all your extra theme code to an object. It will look something like `my_theme <- theme_minimal() + theme(...)` but obviously make sure you include all your options, not just `...`!
 
 The following generates a new graph, using some of the skills we've used already, but with this new dark theme we've created tagged on to the end. Notice that now, when we want to make small changes, like in this case removing the legend, we only have a very small theme section following the addition of `my_theme` (or whatever you've called it).
 
@@ -396,7 +396,7 @@ knitr::include_graphics("img/cow.png")
 library(cowplot)
 ```
 
-Let's first assign some basic graphics to objects. by way of an example. The below assumes that you have loaded in our two example data sets! Remember that you may have names your objects differently to me. Feel free to use your own graphics for this.
+Let's first assign some basic graphics to objects. by way of an example. The below assumes that you have loaded in our two example data sets! Remember that you may have named your objects differently to me. Feel free to use your own graphics for this.
 
 ```{r}
 bar_gg <- ggplot(data = burglary_df) +
@@ -422,7 +422,7 @@ There a number of useful arguments within the function which you can use to tail
 
 ## Saving graphics
 
-Once you've made your visualisations, you might be tempted to simply copy and paste things out of R from with the zoom plot window, or use the manual 'Export' tab. For many people, this will suffice, but if you want full control over your outputs, and want to make things fully reproducible, I would recommmend using the `ggsave()` function. This might appear laborious at first, but like many things we've done today, you will end up using the same code for many things, so it's worthwhile getting used to it!
+Once you've made your visualisations, you might be tempted to simply copy and paste things out of R from with the zoom plot window, or use the manual 'Export' tab. For many people, this will suffice, but if you want full control over your outputs, and want to make things fully reproducible, I would recommend using the `ggsave()` function. This might appear laborious at first, but like many things we've done today, you will end up using the same code for many things, so it's worthwhile getting used to it!
 
 First, assign your visual to an object. Here, we'll make use of the object `p1` we made earlier, containing our scatter plot. If you haven't got this object in your environment, create one using your own plots, or go back to the _customised themes_ section and copy the code to create `p1`. The `ggsave()` function requires three basic arguments: the object you want to save, where you want to save it and the name of the output file. However, there are a number of additional arguments you will find useful, including  the format (e.g. png, tiff, pdf, svg), the width and height of the output (i.e. dimensions in inches, cm or mm), and the dpi (i.e. resolution). These arguments are especially useful when you have journals or clients with specific requirements.
 
