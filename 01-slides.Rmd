@@ -410,19 +410,6 @@ kable(df1,align = "l", caption = "df1")
 
 ## ggplot2: different aesthetics
 
-- x
-- y
-- colour
-- shape
-- size
-- alpha
-- linetype
-- ...
-
----
-
-## ggplot2: different aesthetics
-
 ```{r}
 kable(df1,align = "l", caption = "df1")
 ```
@@ -435,7 +422,22 @@ How does var3 factor into this relationship?
 
 </center>
 
+
 ---
+
+## ggplot2: different aesthetics
+
+- x
+- y
+- colour
+- shape
+- size
+- alpha
+- linetype
+- ...
+
+---
+
 
 ## ggplot2: different aesthetics
 
