@@ -1,8 +1,0 @@
-library(tidyverse)
-
-burglary_df <-  read_csv(file = "https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/gmp_2017.csv")
-
-ggplot(data = burglary_df, mapping = aes(x = incscore,
-                                         y = burglary_count,
-                                         colour = LAname)) +
-  geom_point()
