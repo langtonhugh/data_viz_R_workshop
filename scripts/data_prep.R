@@ -90,6 +90,36 @@ ggplot(data = lsoa.crime.imd) +
   geom_density(mapping = aes(x = IMDscore)) +
   facet_wrap(~LAname)
 
+# add population for r textbook ==============================
+
+pop.df <- read_csv("C:/Users/langt/Documents/OneDrive - MMU/Lenovo/PhD_project/PhD_project/data/pop_estimates/all_lsoa_pop_est.csv")
+
+lsoa.crime.imd <- left_join(lsoa.crime.imd, pop.df)
+
+# write_csv(x = lsoa.crime.imd, path = "C:/Users/langt/Documents/GitHub/r_textbook/Datasets/gmp_2017.csv")
+# 
+# for QGIS mapping
+lsoa.crime.imd.qgis <- lsoa.crime.imd %>% 
+  select(-burglary_count)
+
+#write_csv(x = lsoa.crime.imd, path = "C:/Users/langt/Documents/GitHub/qgis_intro/data/gm_demographics.csv")
+
+england.lsoa.sf <- st_read("C:/Users/langt/Documents/OneDrive - MMU/Lenovo/PhD_project/PhD_project/data/uk_shapefiles/england_lsoa_2011_clipped/england_lsoa_2011_clipped.shp")
+
+list.lsoa <- lsoa.crime.imd.qgis$LSOAcode
+
+gm.lsoa.sf <- england.lsoa.sf %>% 
+  filter(code %in% list.lsoa) %>% 
+  rename(LSOAcode = code)
+
+gm.lsoa.sf <- left_join(gm.lsoa.sf, lsoa.crime.imd.qgis)
+
+st_write(obj = gm.lsoa.sf, dsn = "C:/Users/langt/Documents/GitHub/qgis_intro/data/gm_lsoa.shp",
+         driver = "ESRI Shapefile")
+
+# ============================================================
+
+
 # =============================================================
 # Creating a longitudinal example which uses group aesthetic 
 
