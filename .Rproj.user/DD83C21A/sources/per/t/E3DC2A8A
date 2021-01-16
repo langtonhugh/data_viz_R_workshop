@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1610810876984.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "13313648",
+    "id" : "E3DC2A8A",
+    "lastKnownWriteTime" : 1610810889,
+    "last_content_update" : 1610810889250,
+    "path" : "~/GitHub/data_viz_R_workshop/01-slides.Rmd",
+    "project_path" : "01-slides.Rmd",
+    "properties" : {
+        "cursorPosition" : "28,21",
+        "scrollLine" : "23",
+        "source_window_id" : ""
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Data visualisation in R   using crime data</title>
     <meta charset="utf-8" />
-    <meta name="date" content="2020-02-05" />
+    <meta name="date" content="2020-02-11" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="my_theme.css" type="text/css" />
   </head>
@@ -12,8 +12,8 @@
 class: center, middle, inverse, title-slide
 
 # Data visualisation in R <br> using crime data
-## Samuel Langton
-### 5 February 2020
+## Sam Langton
+### 11 February 2020
 
 ---
 
@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 
 @sh_langton
 
-s.langton@mmu.ac.uk
+s.langton@leeds.ac.uk
 
 ---
 
@@ -36,7 +36,7 @@ s.langton@mmu.ac.uk
 
 @sh_langton
 
-s.langton@mmu.ac.uk
+s.langton@leeds.ac.uk
 
 &lt;br&gt;
 
@@ -53,41 +53,29 @@ Material: https://github.com/langtonhugh/data_viz_R_workshop
 
 ## Contents
 
-**11.15-11.45**
+**10.00-10.15**
 
-- Intro to data viz
-- ggplot2
+- Intro
 
-**11.45-12.15**
+**10.15-11.00**
 
-- Live demo
+- Presentation: data visualisation
 
-**12.15-13.00**
+**11.00-11.15**
 
-- Exercise
-- Own data
+- Short break
+
+**11.15-13.00**
+
+Practical
 
 **13.00-14.00**
 
-- Lunch
+- Long break
 
----
+**14.00-14.30**
 
-## Contents
-
-**14.00-15.00**
-
-- Intro to spatial viz
-- Live demo
-
-**15.00-15.15**
-
-- Coffee
-
-**15.15-16.00**
-
-- Exercise
-- Own data
+- Presentation: applied research using data visualisation
 
 ---
 
@@ -129,18 +117,26 @@ Source: [John Burn-Murdoch](https://johnburnmurdoch.github.io/slides/r-ggplot/#/
 
 ## Data viz in R
 
-&lt;img src="img/trafford1.png" width="1679" /&gt;
+&lt;img src="img/covid_ft.png" width="500px" style="display: block; margin: auto;" /&gt;
 
-Source: [Trafford Data Lab](https://trafforddatalab.shinyapps.io/imd19/)
+Source: [John Burn-Murdoch](https://twitter.com/jburnmurdoch/status/1332233679704383488/photo/1)
 
+---
+
+
+## Data viz in R
+
+&lt;img src="img/covid_map.png" width="650px" style="display: block; margin: auto;" /&gt;
+
+Source: [Colin Angus](https://twitter.com/VictimOfMaths/status/1254812636744687619/photo/3)
 
 ---
 
 ## Data viz in R
 
-&lt;img src="img/nadpi2.png" width="400px" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/trafford1.png" width="1679" /&gt;
 
-Source: [Nadleh Bremer](https://www.visualcinnamon.com/2015/01/exploring-art-hidden-in-pi.html)
+Source: [Trafford Data Lab](https://trafforddatalab.shinyapps.io/imd19/)
 
 ---
 
@@ -149,6 +145,14 @@ Source: [Nadleh Bremer](https://www.visualcinnamon.com/2015/01/exploring-art-hid
 &lt;img src="img/triplets_cb.png" width="250px" style="display: block; margin: auto;" /&gt;
 
 Source: [Sam Langton](https://github.com/langtonhugh/spatial_viz)
+
+---
+
+## Data viz in R
+
+&lt;img src="img/nadpi2.png" width="400px" style="display: block; margin: auto;" /&gt;
+
+Source: [Nadleh Bremer](https://www.visualcinnamon.com/2015/01/exploring-art-hidden-in-pi.html)
 
 ---
 
@@ -178,17 +182,25 @@ Source: [Sharp Insight](https://www.sharpsightlabs.com/blog/how-to-create-a-crim
 
 ## Data viz in R using crime data
 
-&lt;img src="img/londoncrime.gif" height="480px" style="display: block; margin: auto;" /&gt;
+PLACE HOLDER
 
-Source: [Kasia Kulma](https://r-tastic.co.uk/post/animated-plots-as-part-of-exploratory-data-analysis/)
+Source: [Thames Valley Police](place_holder)
 
 ---
 
 ## Data viz in R using crime data
 
-&lt;img src="img/crime_heatmap.png" width="1792" height="480px" style="display: block; margin: auto;" /&gt;
+PLACE HOLDER
 
-Source: [Kasia Kulma](https://r-tastic.co.uk/post/exploring-london-crime-with-r-heat-maps/)
+Source: [Iain Agar](place_holder)
+
+---
+
+## Data viz in R using crime data
+
+&lt;img src="img/covid_crime.png" width="4704" style="display: block; margin: auto;" /&gt;
+
+Source: [Langton, Dixon and Farrell (2020)](https://osf.io/preprints/socarxiv/t7ne8/)
 
 ---
 
@@ -334,7 +346,7 @@ ggplot(data = df1)
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-20-1.png" width="320px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-21-1.png" width="320px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -402,7 +414,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2))
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-24-1.png" width="400px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-25-1.png" width="400px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -472,7 +484,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2)) +
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-28-1.png" width="400px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-29-1.png" width="400px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -593,7 +605,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2, colour = var3)) +
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-32-1.png" width="400px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-33-1.png" width="400px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -649,7 +661,7 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2, shape = var3)) +
 ```
 
 .pull-left[
-&lt;img src="01-slides_files/figure-html/unnamed-chunk-35-1.png" width="400px" /&gt;
+&lt;img src="01-slides_files/figure-html/unnamed-chunk-36-1.png" width="400px" /&gt;
 ]
 
 &lt;br&gt; 
@@ -709,67 +721,6 @@ ggplot(data = df1, mapping = aes(x = var1, y = var2, shape = var3)) +
 ---
 
 ## Crime demo
-
----
-
-## Maps in R
-
-&lt;img src="img/convo.jpg" width="470px" style="display: block; margin: auto;" /&gt;
-
-Source: [The Conversation](https://theconversation.com/even-the-most-beautiful-maps-can-be-misleading-126474)
-
----
-
-## The good news...
-
-- Making a map in R is _very similar_ to what we have covered already.
-- Using `ggplot2` to create beautiful maps is fairly straightforward, making use of an additional package `sf`.
-
-&lt;img src="img/sf.gif" width="300px" style="display: block; margin: auto;" /&gt;
-
----
-
-## The bad news...
-
-- You might be entering uncharted territory!
-- Spatial visualisation necessitates some additional level of understanding in geography and Geographic Information Systems (GIS), including:
-  - Spatial data
-  - Projection
-  - Visualisation issues
-  
----
-
-## The bad news: spatial data
-
-- Today, we will use shapefiles (`.shp`).
-- Shapefiles are a popular format to store geospatial vector data.
-- Unlike standard 2D data frames, such as .csv files, shapefiles contains multiple components.
-  - `.shp`
-  - `.shx`
-  - `.dbf`
-  - `.prj`
-- But there are other formats, such as _.geojson_ or _kml_, which you might come across.
-- There is some [debate](https://gis.stackexchange.com/questions/64909/which-data-formats-are-best-for-open-data-distribution) over the most appropriate, with each having their own advantages and disadvantages.
-
----
-
-## The bad news: projections
-
-&lt;img src="img/qgisproj.png" width="600px" style="display: block; margin: auto;" /&gt;
-
-Source: [QGIS](https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/coordinate_reference_systems.html).
-
----
-
-## The bad news: visualisation issues
-
-&lt;img src="img/jr1.png" width="600px" style="display: block; margin: auto;" /&gt;
-
-Source: [Jerry Ratcliffe](http://www.lifestudy.ac.uk/jdi/events/mapping-conf/conf-2004/conf2004-downloads/jerry-ten-mapping-tips.pdf)
-
----
-
-## Crime demo
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -816,9 +767,25 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -826,8 +793,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
       links[i].target = '_blank';
     }
   }
-})();
-</script>
+})();</script>
 
 <script>
 slideshow._releaseMath = function(el) {

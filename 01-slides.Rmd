@@ -1,7 +1,7 @@
 ---
 title: "Data visualisation in R <br> using crime data"
-subtitle: "Samuel Langton"
-date: "5 February 2020"
+subtitle: "Sam Langton"
+date: "11 February 2020"
 # output: beamer_presentation
 output:
   xaringan::moon_reader:
@@ -26,7 +26,7 @@ knitr::include_graphics("https://pbs.twimg.com/profile_images/866718054989930496
 
 @sh_langton
 
-s.langton@mmu.ac.uk
+s.langton@leeds.ac.uk
 
 ---
 
@@ -38,7 +38,7 @@ knitr::include_graphics("https://pbs.twimg.com/profile_images/866718054989930496
 
 @sh_langton
 
-s.langton@mmu.ac.uk
+s.langton@leeds.ac.uk
 
 <br>
 
@@ -55,41 +55,29 @@ Material: https://github.com/langtonhugh/data_viz_R_workshop
 
 ## Contents
 
-**11.15-11.45**
+**10.00-10.15**
 
-- Intro to data viz
-- ggplot2
+- Intro
 
-**11.45-12.15**
+**10.15-11.00**
 
-- Live demo
+- Presentation: data visualisation
 
-**12.15-13.00**
+**11.00-11.15**
 
-- Exercise
-- Own data
+- Short break
+
+**11.15-13.00**
+
+Practical
 
 **13.00-14.00**
 
-- Lunch
+- Long break
 
----
+**14.00-14.30**
 
-## Contents
-
-**14.00-15.00**
-
-- Intro to spatial viz
-- Live demo
-
-**15.00-15.15**
-
-- Coffee
-
-**15.15-16.00**
-
-- Exercise
-- Own data
+- Presentation: applied research using data visualisation
 
 ---
 
@@ -135,22 +123,32 @@ Source: [John Burn-Murdoch](https://johnburnmurdoch.github.io/slides/r-ggplot/#/
 
 ## Data viz in R
 
-```{r, echo=FALSE}
-knitr::include_graphics("img/trafford1.png")
+```{r, echo=FALSE, out.width="500px", fig.align= "center"}
+knitr::include_graphics("img/covid_ft.png")
 ```
 
-Source: [Trafford Data Lab](https://trafforddatalab.shinyapps.io/imd19/)
+Source: [John Burn-Murdoch](https://twitter.com/jburnmurdoch/status/1332233679704383488/photo/1)
 
+---
+
+
+## Data viz in R
+
+```{r, echo=FALSE, out.width="650px", fig.align= "center"}
+knitr::include_graphics("img/covid_map.png")
+```
+
+Source: [Colin Angus](https://twitter.com/VictimOfMaths/status/1254812636744687619/photo/3)
 
 ---
 
 ## Data viz in R
 
-```{r, echo=FALSE, out.width="400px", fig.align= "center"}
-knitr::include_graphics("img/nadpi2.png")
+```{r, echo=FALSE}
+knitr::include_graphics("img/trafford1.png")
 ```
 
-Source: [Nadleh Bremer](https://www.visualcinnamon.com/2015/01/exploring-art-hidden-in-pi.html)
+Source: [Trafford Data Lab](https://trafforddatalab.shinyapps.io/imd19/)
 
 ---
 
@@ -161,6 +159,16 @@ knitr::include_graphics("img/triplets_cb.png")
 ```
 
 Source: [Sam Langton](https://github.com/langtonhugh/spatial_viz)
+
+---
+
+## Data viz in R
+
+```{r, echo=FALSE, out.width="400px", fig.align= "center"}
+knitr::include_graphics("img/nadpi2.png")
+```
+
+Source: [Nadleh Bremer](https://www.visualcinnamon.com/2015/01/exploring-art-hidden-in-pi.html)
 
 ---
 
@@ -196,21 +204,27 @@ Source: [Sharp Insight](https://www.sharpsightlabs.com/blog/how-to-create-a-crim
 
 ## Data viz in R using crime data
 
-```{r, echo=FALSE,  out.height="480px", fig.align= "center"}
-knitr::include_graphics("img/londoncrime.gif")
-```
+PLACE HOLDER
 
-Source: [Kasia Kulma](https://r-tastic.co.uk/post/animated-plots-as-part-of-exploratory-data-analysis/)
+Source: [Thames Valley Police](place_holder)
 
 ---
 
 ## Data viz in R using crime data
 
-```{r, echo=FALSE,  out.height="480px", fig.align= "center"}
-knitr::include_graphics("img/crime_heatmap.png")
+PLACE HOLDER
+
+Source: [Iain Agar](place_holder)
+
+---
+
+## Data viz in R using crime data
+
+```{r, echo=FALSE, fig.align= "center"}
+knitr::include_graphics("img/covid_crime.png")
 ```
 
-Source: [Kasia Kulma](https://r-tastic.co.uk/post/exploring-london-crime-with-r-heat-maps/)
+Source: [Langton, Dixon and Farrell (2020)](https://osf.io/preprints/socarxiv/t7ne8/)
 
 ---
 
@@ -502,75 +516,6 @@ kable(df1,align = "l", caption = "df1")
 ```{r, echo=FALSE, fig.align= "center"}
 knitr::include_graphics("img/gg_examples.png")
 ```
-
----
-
-## Crime demo
-
----
-
-## Maps in R
-
-```{r, out.width = "470px", echo=FALSE, fig.align= "center"}
-knitr::include_graphics("img/convo.jpg")
-```
-
-Source: [The Conversation](https://theconversation.com/even-the-most-beautiful-maps-can-be-misleading-126474)
-
----
-
-## The good news...
-
-- Making a map in R is _very similar_ to what we have covered already.
-- Using `ggplot2` to create beautiful maps is fairly straightforward, making use of an additional package `sf`.
-
-```{r, out.width = "300px", echo=FALSE, fig.align= "center"}
-knitr::include_graphics("img/sf.gif")
-```
-
----
-
-## The bad news...
-
-- You might be entering uncharted territory!
-- Spatial visualisation necessitates some additional level of understanding in geography and Geographic Information Systems (GIS), including:
-  - Spatial data
-  - Projection
-  - Visualisation issues
-  
----
-
-## The bad news: spatial data
-
-- Today, we will use shapefiles (`.shp`).
-- Shapefiles are a popular format to store geospatial vector data.
-- Unlike standard 2D data frames, such as .csv files, shapefiles contains multiple components.
-  - `.shp`
-  - `.shx`
-  - `.dbf`
-  - `.prj`
-- But there are other formats, such as _.geojson_ or _kml_, which you might come across.
-- There is some [debate](https://gis.stackexchange.com/questions/64909/which-data-formats-are-best-for-open-data-distribution) over the most appropriate, with each having their own advantages and disadvantages.
-
----
-
-## The bad news: projections
-
-```{r, out.width = "600px", echo=FALSE, fig.align= "center"}
-knitr::include_graphics("img/qgisproj.png")
-```
-
-Source: [QGIS](https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/coordinate_reference_systems.html).
-
----
-
-## The bad news: visualisation issues
-
-```{r, out.width = "600px", echo=FALSE, fig.align= "center"}
-knitr::include_graphics("img/jr1.png")
-```
-
-Source: [Jerry Ratcliffe](http://www.lifestudy.ac.uk/jdi/events/mapping-conf/conf-2004/conf2004-downloads/jerry-ten-mapping-tips.pdf)
 
 ---
 
