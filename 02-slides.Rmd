@@ -118,7 +118,7 @@ Source: [NEON via Data Carpentry](https://datacarpentry.org/organization-geospat
 
 ---
 
-### The bad news: spatial data
+## The bad news: spatial data
 
 - Today, we will use shapefiles (`.shp`).
 - Shapefiles are a popular format to store geospatial vector data.

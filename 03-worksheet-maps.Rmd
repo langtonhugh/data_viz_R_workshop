@@ -1,7 +1,7 @@
 ---
 title: "Data visualisation in R"
 author: "Sam Langton"
-date: "5 February 2020"
+date: "12 February 2020"
 output:
   html_document:
     toc: true
@@ -16,11 +16,11 @@ library(ggplot2); library(readr); library(sf)
 
 ## Preamble
 
-The page contains the course material for a workshop hosted jointly between the [University of Manchester](https://www.manchester.ac.uk/) and the [UK Data Service](https://ukdataservice.ac.uk/). All material and associated scripts are available on [GitHub](https://github.com/langtonhugh/data_viz_R_workshop).
+This page contains the course material for a workshop hosted jointly between the [Methods@Manchester](https://www.methods.manchester.ac.uk/), the [UK Data Service](https://ukdataservice.ac.uk/) and the [University of Leeds](https://covid19-crime.com/). All material and associated scripts are available on [GitHub](https://github.com/langtonhugh/data_viz_R_workshop).
 
 ## Background
 
-Earlier today we covered data visualisation in R using `ggplot2`, a graphics package based on the [grammar of graphics](https://vita.had.co.nz/papers/layered-grammar.html) which is fully integrated into the [tidyverse](https://www.tidyverse.org/). By now you will have a solid understanding of how to build graphics using the package. Fortunately, due to the integration of spatial packages in R and ggplot, the step from making standard graphics to making spatial visualisations (e.g. thematic maps) is a small one. We'll be making use of the same skills you picked up earlier, but with spatial data. As we discussed, there are additional considerations to make when creating maps in R in terms of projections, data types and visualisation techniques, but in terms of the practical skills in code, you are going to notice a lot of similarities.
+Yesterday we covered data visualisation in R using `ggplot2`, a graphics package based on the [grammar of graphics](https://vita.had.co.nz/papers/layered-grammar.html) which is fully integrated into the [tidyverse](https://www.tidyverse.org/). By now you will have a solid understanding of how to build graphics using the package. Fortunately, due to the integration of spatial packages in R and ggplot, the step from making standard graphics to making spatial visualisations (e.g. thematic maps) is a small one. We'll be making use of the same skills you picked up earlier, but with spatial data. As we discussed, there are additional considerations to make when creating maps in R in terms of projections, data types and visualisation techniques, but in terms of the practical skills in code, you are going to notice a lot of similarities.
 
 ## Spatial data using `sf`
 
@@ -28,7 +28,7 @@ One of the fastest growing packages in this area is [sf](https://github.com/r-sp
 
 ### Raw data
 
-Earlier today we examined neighbourhood-level burglary concentrations in Greater Manchester. This information was created from individual records which are [openly available](https://data.police.uk/) online. These raw records, amongst other things, contain the location of where each crime occurred with [latitude and longitude](https://www.latlong.net/) coordinates. Well, they tell you _roughly_ where the crime occurred, to ensure confidentiality. The first thing we might want to do when exploring burglary victimisation is to map out these locations to identify interesting patterns and hotspots across space.
+Yesterday we examined neighbourhood-level burglary concentrations in Greater Manchester. This information was created from individual records which are [openly available](https://data.police.uk/) online. These raw records, amongst other things, contain the location of where each crime occurred with [latitude and longitude](https://www.latlong.net/) coordinates. Well, they tell you _roughly_ where the crime occurred, to ensure confidentiality. The first thing we might want to do when exploring burglary victimisation is to map out these locations to identify interesting patterns and hotspots across space.
 
 First, let's load in some individual records as a standard data frame from a .csv file. This makes use of the `readr` package within the tidyverse, just as we have done previously. This specific data set contains burglary records occurring in Manchester during January 2017.
 
@@ -148,7 +148,7 @@ ggplot() +
   geom_sf(data = manc_sf, fill = "transparent") 
 ```
 
-As an aside, you might notice that on the above maps, some neighbourhoods are much larger than others. This is because LSOAs are designed to be fairly uniform by resident populations, but some residential areas are more densely populated than others. Variation between the sizes of areas being mapped can be problematic, and sometimes even misleading, so it is worth considering this when creating maps for dissemination to the public or colleagues (or even yourself!). There are creative ways of mapping which can account for this, such as cartograms or regular grids. If you are interested in exploring these, there's a great package called [geogrid](https://github.com/jbaileyh/geogrid) for creating regular grids, and some [open code](http://rpubs.com/profrichharris/342278) from Richard Harris (University of Bristol) for cartograms and 'hexograms'.
+As an aside, you might notice that on the above maps, some neighbourhoods are much larger than others. This is because LSOAs are designed to be fairly uniform by resident populations, but some residential areas are more densely populated than others. Variation between the sizes of areas being mapped can be problematic, and sometimes even misleading, so it is worth considering this when creating maps for dissemination to the public or colleagues (or even yourself!). There are creative ways of mapping which can account for this, such as cartograms or regular grids. If you are interested in exploring these, there's a great package called [geogrid](https://github.com/jbaileyh/geogrid) for creating regular grids. Using [open code](http://rpubs.com/profrichharris/342278) from Richard Harris (University of Bristol), we can also generate balanced cartograms and 'hexograms'.
 
 Now you are familiar with making spatial visualisations in R, try adding a map to your `cowplot` from this morning, and adjusting it with a customised theme.
 

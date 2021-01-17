@@ -1,7 +1,7 @@
 ---
 title: "Data visualisation in R"
 author: "Sam Langton"
-date: "5 February 2020"
+date: "11 February 2020"
 output:
   html_document:
     toc: true
@@ -16,7 +16,7 @@ library(ggplot2); library(readr)
 
 ## Preamble
 
-This page contains the course material for a workshop hosted jointly between the [University of Manchester](https://www.manchester.ac.uk/) and the [UK Data Service](https://ukdataservice.ac.uk/). All material and associated scripts are available on [GitHub](https://github.com/langtonhugh/data_viz_R_workshop).
+This page contains the course material for a workshop hosted jointly between the [Methods@Manchester](https://www.methods.manchester.ac.uk/), the [UK Data Service](https://ukdataservice.ac.uk/) and the [University of Leeds](https://covid19-crime.com/). All material and associated scripts are available on [GitHub](https://github.com/langtonhugh/data_viz_R_workshop).
 
 ## Background
 
@@ -396,7 +396,7 @@ knitr::include_graphics("img/cow.png")
 library(cowplot)
 ```
 
-Let's first assign some basic graphics to objects. by way of an example. The below assumes that you have loaded in our two example data sets! Remember that you may have named your objects differently to me. Feel free to use your own graphics for this.
+Let's first assign some basic graphics to objects, by way of an example. The below assumes that you have loaded in our two example data sets! Remember that you may have named your objects differently to me. Feel free to use your own graphics for this, or make a more complex arrangement.
 
 ```{r}
 bar_gg <- ggplot(data = burglary_df) +
@@ -420,6 +420,8 @@ If you want to explore `cowplot` a bit more, try sketching out an 'ideal' visual
 
 There a number of useful arguments within the function which you can use to tailor these arrangements, in terms of things like label names and figure widths. You can even use your customised themes on `cowplot` arrangements in the same way we have earlier. Feel free to explore it more using the excellent [documentation](https://wilkelab.org/cowplot/articles/plot_grid.html) the authors have made available online.
 
+If you haven't taken to `cowplot`, or you'd rather try a different but comparable package, I would recommend taking a look at `patchwork`. This package uses a very simple syntax to arrange plots. You can read more about it on the creator's [website](https://patchwork.data-imaginist.com/).
+
 ## Saving graphics
 
 Once you've made your visualisations, you might be tempted to simply copy and paste things out of R from with the zoom plot window, or use the manual 'Export' tab. For many people, this will suffice, but if you want full control over your outputs, and want to make things fully reproducible, I would recommend using the `ggsave()` function. This might appear laborious at first, but like many things we've done today, you will end up using the same code for many things, so it's worthwhile getting used to it!
@@ -429,7 +431,8 @@ First, assign your visual to an object. Here, we'll make use of the object `p1` 
 We're going to save `p1` using some example specifications to my local drive. Remember to change the `path` argument to fit your own computer!
 
 ```{r}
-ggsave(plot = p1, path = "visuals", filename = "my_plot.png", device = "png", width = 16, height = 12, units = "cm", dpi = 100)
+ggsave(plot = p1, path = "visuals", filename = "my_plot.png", device = "png", width = 16, height = 12, units = "cm",
+       dpi = 100)
 ```
 
 ## Resources
@@ -437,5 +440,5 @@ ggsave(plot = p1, path = "visuals", filename = "my_plot.png", device = "png", wi
 1. _R for Data Science_ is a [free book](https://r4ds.had.co.nz/) which gives you a comprehensive introduction to the tidyverse, including `ggplot2`. 
 2. For a more comprehensive overview of `ggplot2` there is a entire book dedicated to it, [freely available online](https://ggplot2-book.org/) by the author.
 3. Google is one your best free resources! Queries will often take you to great websites like Stack Overflow, where in 99% of cases, someone has asked exactly the same question you have!
-4. For an overview of data visualisation more generally, Andy Kirk has a fantastic [book](https://www.amazon.co.uk/Data-Visualisation-Andy-Kirk/dp/1473912148), and a [website](https://www.visualisingdata.com/resources/) with free resources and inspiring examples of data viz.
-5. Twitter will broaden your knowledge of R more generally, or to keep up-to-date with the latest developments, Twitter is a great resource. There are few key people, such as [Hadley Wickham](https://twitter.com/hadleywickham?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor), [Mara Averick](https://twitter.com/dataandme?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor), [Julia Silge](https://twitter.com/juliasilge?lang=en) and [Thomas Lin Pederson](https://twitter.com/thomasp85?lang=en), who are definitely worth following, but there are many others who you will come across. The hashtag [#rstats](https://twitter.com/search?q=%23rstats) also showcases great graphics and other work people have done with R.
+4. For an overview of data visualisation more generally, Andy Kirk has a fantastic [book](https://uk.sagepub.com/en-gb/eur/data-visualisation/book266150?utm_source=web&utm_medium=AKblog), and a [website](https://www.visualisingdata.com/resources/) with free resources and inspiring examples of data viz.
+5. Twitter will broaden your knowledge of R more generally, but it is also a great resource to keep up-to-date with the latest developments in packages like `ggplot2`. There are few key people, such as [Hadley Wickham](https://twitter.com/hadleywickham?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor), [Mara Averick](https://twitter.com/dataandme?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor), [Julia Silge](https://twitter.com/juliasilge?lang=en) and [Thomas Lin Pederson](https://twitter.com/thomasp85?lang=en), who are definitely worth following, but there are many others who you will come across. The hashtag [#rstats](https://twitter.com/search?q=%23rstats) also showcases great graphics and other work people have done with R.
