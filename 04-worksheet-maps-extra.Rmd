@@ -1,0 +1,32 @@
+---
+title: "Data visualisation in R: extras"
+author: "Sam Langton"
+date: "12 February 2020"
+output:
+  html_document:
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2); library(readr); library(sf)
+```
+
+## Preamble
+
+This page contains the course material for a workshop hosted jointly between the [Methods@Manchester](https://www.methods.manchester.ac.uk/), the [UK Data Service](https://ukdataservice.ac.uk/) and the [University of Leeds](https://covid19-crime.com/). All material and associated scripts are available on [GitHub](https://github.com/langtonhugh/data_viz_R_workshop).
+
+## Background
+
+This worksheet covers some additional mapping skills in R that you may find useful. First, we take a look at how to create 'hex maps'. Rather than visualise the original boundaries of say, neighbourhoods or countries, we use regular shapes, such as hexagons and squares, to represent each polygon. This is particularly useful when we are mapping regions consisting of areas which vary considerably in their shape and size. For some additional background information, you may want to read [this article](https://theconversation.com/even-the-most-beautiful-maps-can-be-misleading-126474), which uses some examples in R, including the one we demonstrate here.
+
+Secondly, we show how to make _bivariate_ choropleth maps. Research problems in criminology often involving modelling or testing the relationship between two variables. For instance, we might ask: "what is the relationship between neighbourhood deprivation and crime?". Building on some of the skills we picked up earlier, we demonstrate a method to visualise two variables simultaneously in the same map.
+
+## Hex maps
+
+## Bivariate maps
+
+
+

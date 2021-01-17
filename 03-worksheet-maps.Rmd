@@ -1,5 +1,5 @@
 ---
-title: "Data visualisation in R"
+title: "Data visualisation in R: maps"
 author: "Sam Langton"
 date: "12 February 2020"
 output:
