@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1611498012904.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2086138391",
+    "id" : "2C42B2A6",
+    "lastKnownWriteTime" : 1611499029,
+    "last_content_update" : 1611499029102,
+    "path" : "~/GitHub/data_viz_R_workshop/04-worksheet-extras.Rmd",
+    "project_path" : "04-worksheet-extras.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "119,283",
+        "scrollLine" : "108",
+        "source_window_id" : ""
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
