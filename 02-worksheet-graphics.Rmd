@@ -123,11 +123,11 @@ As noted earlier, it is important to be familiar with your data and its structur
 - **IMDscore**       Index of Multiple Deprivation score for 2019.
 - **IMDrank**        Rank of the LSOA in terms of deprivation for England.
 - **IMDdeci**        Deprivation decile for England (1-most deprived, 10-least deprived)
-- **incscore**       Income score of residents, a component of the IMD. 
+- **incscore**       Income score of residents, a component of the IMD. The higher the score, the higher the income deprivation.
 
 ### Basic plot
 
-There are a number of research questions that can be answered using this data. We might be interested in the relationship between deprivation and burglary victimisation. The overall Index of Multiple Deprivation measure (i.e. the score, rank and decile) makes use of police recorded crime data, so it is probably best to use the `incscore` component in isolation. What is the relationship between burglary counts and income? Are high-income neighbourhoods more or less likely to be victimised? We can explore this question using skills we learnt earlier: with a scatter plot! We will define the data, aesthetics and geometry just as before.
+There are a number of research questions that can be answered using this data. We might be interested in the relationship between deprivation and burglary victimisation. The overall Index of Multiple Deprivation measure (i.e. the score, rank and decile) has a crime component to it, so we can use the `incscore` component in isolation. The [higher the income score](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/835115/IoD2019_Statistical_Release.pdf), the higher the income deprivation. What is the relationship between burglary counts and income? Are low income neighbourhoods more or less likely to be victimised? We can explore this question using skills we learnt earlier: with a scatter plot! We will define the data, aesthetics and geometry just as before.
 
 ```{r}
 ggplot(data = burglary_df, mapping = aes(x = incscore, y = burglary_count)) +
@@ -193,10 +193,10 @@ Our graphic is shaping up well, but you'll notice that all our labels have been 
 ggplot(data = burglary_df, mapping = aes(x = incscore, y = burglary_count, colour = LAname)) +
   geom_point(size = 3, alpha = 0.5) +
     scale_colour_brewer(palette = "Spectral") +
-  labs(x = "Income score",
+  labs(x = "Income deprivation score",
        y = "Burglary count",
-       title = "Relationship between income and burglary victimisation",
-       caption = "Income score derived from 2019 IMD measure. Burglary counts from 2017",
+       title = "Relationship between income deprivation and burglary victimisation",
+       caption = "Income deprivation score derived from 2019 IMD measure. Burglary counts from 2017",
        colour = "Local Authority")
 ```
 
@@ -208,10 +208,10 @@ We are nearly there! A final touch you might want to incorporate are themes. The
 ggplot(data = burglary_df, mapping = aes(x = incscore, y = burglary_count, colour = LAname)) +
   geom_point(size = 3, alpha = 0.5) +
     scale_colour_brewer(palette = "Spectral") +
-  labs(x = "Income score",
+  labs(x = "Income deprivation score",
        y = "Burglary count",
-       title = "Relationship between income and burglary victimisation",
-       caption = "Income score derived from 2019 IMD measure. Burglary counts from 2017",
+       title = "Relationship between income deprivation and burglary victimisation",
+       caption = "Income deprivation score derived from 2019 IMD measure. Burglary counts from 2017",
        colour = "Local Authority") +
   theme_minimal()
 ```
@@ -321,10 +321,10 @@ Let's take our scatter plot from the beginning of this worksheet. This time, cre
 p1 <- ggplot(data = burglary_df, mapping = aes(x = incscore, y = burglary_count, colour = LAname)) +
         geom_point(size = 3, alpha = 0.7) +
           scale_colour_brewer(palette = "Spectral") +
-        labs(x = "Income score",
+        labs(x = "Income deprivation score",
         y = "Burglary count",
-        title = "Relationship between neighbourhood income and burglary victimisation",
-        subtitle = "Income score derived from 2019 IMD measure. Burglary counts from 2017",
+        title = "Neighbourhood income deprivation and burglary victimisation",
+        subtitle = "Income deprivation score derived from 2019 IMD measure. Burglary counts from 2017",
         colour = "Local Authority")
 ```
 

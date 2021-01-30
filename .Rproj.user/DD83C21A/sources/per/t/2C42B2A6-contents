@@ -99,7 +99,7 @@ depriv_grid <- ggplot(data = manc_grid_results_sf) +
 plot_grid(depriv_orig, depriv_grid, labels = c("Raw boundaries", "Regular grid"), scale = 0.9)
 ```
 
-How do the two maps compare? Has the spatial patterning been maintained? Are we representing the underlying data accurately? What areas are problematic? It is possible that we could improve things by altering some of the parameters in `geogrid` (e.g. using different seed). We might also consider alternatives, such as [hexograms](https://rpubs.com/profrichharris/hexograms).
+How do the two maps compare? Has the spatial patterning been maintained? Are we representing the underlying data accurately? What areas are problematic? It is possible that we could improve things by altering some of the parameters in `geogrid` (e.g. using different seed). We might also consider alternatives, such as [hexograms](https://rpubs.com/profrichharris/hexograms) which h[ave been shown](https://journals.sagepub.com/doi/full/10.1177/2399808319873923?casa_token=WCzf7UmPxScAAAAA%3Ak84zK35N_Y0TiIhNdXPdN3Fnm0PoWhUIeaImN3DobshAR59CfuFP1nUyGTAjGjMOUC-cn5DegCC2qQ) to out perform tiled grids in some scenarios.
 
 To me, the new map successfully captures the important information. We can clearly identify the widespread deprivation to the east of the city centre, and the pockets of wealthier areas in the south. But, you might disagree! And importantly, whether the regular grid is suitable or not will very much depend on the purpose of the visualisation, and who the audience is.
 
@@ -107,21 +107,96 @@ To me, the new map successfully captures the important information. We can clear
 
 A fairly new package called `biscale` can be used to create [bivariate](https://cran.r-project.org/web/packages/biscale/vignettes/biscale.html) maps in conjunction with `sf`, which we've covered already. As usual, ensure you have this extra package installed and loaded using `install.packages()` and `library()`.
 
-```{r}
+```{r, message=F, warning=F}
 library(biscale)
 ```
 
 The first thing we need to do is create a new classification for the two variables we want to visualise. For this example, we will continue to use our Manchester data (`manc_sf`), but as always, please feel free to replicate this example using you're own data. We'll begin be loading in the data, just in case you haven't run through hex map stuff above. Just for fun, we're going to use the `geogrid` version of LSOAs rather than the raw boundaries.
 
-```{r}
+```{r, message=F, warning=F, results=F}
 manc_grid_results_sf <- st_read("data/geogrid_manc.shp")
 ```
 
-Next, we'll create the classes. Recall that we have information about burglary and deprivation for each LSOA in the city of Manchester. If you saved and loaded in the data, the variable names may have been truncated, an irritating [feature of shapefiles](https://support.esri.com/en/technical-article/000022868), but it should be fairly clear what is what. In my data, we have `brglry_` (the burglary count for January 2017) and `incscore` (the income component of the deprivation measure). What might the relationship be between these variables, and how might it vary spatially across Manchester?
+Next, we'll create the classes. Recall that we have information about burglary and deprivation for each LSOA in the city of Manchester. If you saved and loaded in the data, the variable names may have been truncated, an irritating [feature of shapefiles](https://support.esri.com/en/technical-article/000022868), but it should be fairly clear what is what. In my data, we have `brglry_` (the burglary count for January 2017) and `incscor` (the income component of the deprivation measure). What might the relationship be between these variables, and how might it vary spatially across Manchester?
 
+Using the `bi_class()` function, we can specify the `sf` object, the variables we are interested in, the style of classification (i.e. how to classify the data), and the number of dimensions (i.e. 2x2 or 3x3). Because the package creates a new variable `bi_class` by default, we can simply assign the output to the existing `sf` object.
+
+```{r}
+manc_grid_results_sf <- bi_class(manc_grid_results_sf, x = incscor, y = brglry_, style = "quantile", dim = 3)
+```
+
+Here, we chose a quantile classification, but this decision is not trivial. In reality, we would probably explore a few different options (e.g. jenks) depending on the distribution of the data and the purpose of the visualisation. You can read a bit more about classification in maps on the [Axis Maps website](https://www.axismaps.com/guide/data-classification).
+
+We can now pretty much mimic our existing skills in `ggplot2` to create a map of this variable. One change is the use of a different aesthetic layer, in this case, `bi_scale_fill()` instead of something like `scale_fill_brewer()`. The use of this new layer is not strictly necessarily, but it does make it easier to choose and customise your palettes and overall visual.
+
+```{r}
+ggplot(data = manc_grid_results_sf) +
+  geom_sf(mapping = aes(fill = bi_class)) +
+  bi_scale_fill(pal = "GrPink", dim = 3) 
+```
+
+As it stands, interpreting this legend is not exactly straightforward. We might guess that "1-1" represents LSOAs with low burglary and a low income deprivation score, and vice-versa for "3-3" but it's certainly not intuitive or particularly clear at the moment. With a few more tweaks using the `biscale` package we can generate a meaningful legend, and stick it together with this map.
+
+First, we re-plot the map without a legend, and apply the 'void' theme to create a blank slate for our new legend. We can use `bi_legend()` to generate the custom legend. Note that this should match the details we specify in `bi_scale_fill()`. We assign each of these new graphics to objects.
+
+```{r}
+my_hexmap <- ggplot(data = manc_grid_results_sf) +
+  geom_sf(mapping = aes(fill = bi_class), show.legend = FALSE) +
+  bi_scale_fill(pal = "GrPink", dim = 3) +
+  theme_void()
+
+my_legend <- bi_legend(pal = "GrPink",
+                       dim = 3,
+                       xlab = "More income deprivation",
+                       ylab = "More burglary",
+                       size = 9)
+```
+
+The final step is to arrange the two objects using `ggdraw()`. You might find this function a bit fiddly. That's because it is, and I am sorry. However, it is a useful way of generating completely customisable arrangements and graphics. We accept the default positioning of the map in `my_hexmap` but then manually select the location and dimensions of the legend object `my_legend`. The x-value (from 0 to 1) specifies horizontal, and the y-value (from 0 to 1) specifies the vertical. So for instance, `x = 0.5, y = 0.5` will place the object in the middle of the graphic.
+
+```{r, out.width="150%"}
+ggdraw() +
+  draw_plot(my_hexmap) +
+  draw_plot(my_legend,
+            x = 0.1, y = 0.65, width = 0.2, height = 0.2,
+            scale = 1.5)
+```
+
+So, we've now created a hex map visualising the relationship between income deprivation and burglary victimisation in Manchester. I think we can all agree that visualisations like this can tell powerful and accessible stories about crime and inequality. But we should also remain critical and self-aware of the decisions and techniques underlying the visual. What story are we trying tell? How might people (experts and non-experts) interpret the visual? What might the shortcomings be? What are the implications for the reader? How might we mitigate against potential shortcomings? 
 
 ## Annotation
 
 There are a few ways to annotate your `ggplot2` outputs, but one common method is by using an [annotation layer](https://ggplot2.tidyverse.org/reference/annotate.html). Using this layer, we can manually add text and lines (amongst other things) to our `ggplot2` graphics.
 
+Here, we add a text label with an accompanying arrow to the above map by way of an example to readers, helping them understand the legend. Annotations are arranged on existing plots by specifying x-y coordinates. Often, this will directly correspond to the axis in your graphic, but for maps, it can be used as above (i,e, x-y scales from 0 to 1).
 
+To run the below code, we assume that the above map has been saved to an object named `p1`.
+
+```{r, echo = F}
+p1 <- ggdraw() +
+  draw_plot(my_hexmap) +
+  draw_plot(my_legend,
+            x = 0.1, y = 0.65, width = 0.2, height = 0.2,
+            scale = 1.5)
+```
+
+```{r, out.width="150%"}
+p1 +
+  annotate(geom = "text",
+           x = 0.75, y = 0.3,
+           label = "Low income deprivation \n and low burglary",
+           size = 3) +
+  annotate(geom = "curve",
+           x = 0.65, xend = 0.54, y = 0.3, yend = 0.4,
+           curvature = -0.3,
+           arrow = arrow(length = unit(1, "mm"))) +
+  annotate(geom = "text",
+           x = 0.8, y = 0.8,
+           label = "High income deprivation \n and high burglary",
+           size = 3) +
+    annotate(geom = "curve",
+           x = 0.76, xend = 0.65, y = 0.75, yend = 0.65,
+           curvature = -0.1,
+           arrow = arrow(length = unit(1, "mm"))) 
+  
+```
