@@ -162,7 +162,14 @@ ggdraw() +
             scale = 1.5)
 ```
 
-So, we've now created a hex map visualising the relationship between income deprivation and burglary victimisation in Manchester. I think we can all agree that visualisations like this can tell powerful and accessible stories about crime and inequality. But we should also remain critical and self-aware of the decisions and techniques underlying the visual. What story are we trying tell? How might people (experts and non-experts) interpret the visual? What might the shortcomings be? What are the implications for the reader? How might we mitigate against potential shortcomings? 
+So, we've now created a hex map visualising the relationship between income deprivation and burglary victimisation in Manchester. I think we can all agree that visualisations like this can tell powerful and accessible stories about crime and inequality. But we should also remain critical and self-aware of the decisions and techniques underlying the visual. We might consider the following questions:
+
+- What story are we trying tell?
+- Are we conveying the underlying data accurately?
+- How might people (experts and non-experts) interpret the visual?
+- What might the shortcomings be?
+- What are the implications for the reader?
+- How might we mitigate against potential shortcomings? 
 
 ## Annotation
 
