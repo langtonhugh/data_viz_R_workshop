@@ -1,47 +1,45 @@
-# Load packages
+# Load packages.
 library(readr)
-library(ggplot2)
 library(dplyr)
-library(sf)
+library(janitor)
+library(tidyr)
 
-# Load data
-burglary_df <- read_csv("data/gmp_2017.csv")
+# Archive data covering the 3-year period up to and including November 2020.
+download.file(url = "https://data.police.uk/data/archive/2020-11.zip", destfile = "data/archive2020-11.zip")
 
-# Scatter 1
-ggplot(data = burglary_df, mapping = aes(x = incscore, y = burglary_count)) +
-  geom_point() +
-  geom_smooth(method = "lm")
+# Unzip.
+unzip(zipfile = "data/archive2020-11.zip", exdir = "data")
 
-# Scatter 2
-ggplot(data = burglary_df) +
-  geom_point(mapping = aes(x = incscore, y = burglary_count)) +
-  geom_smooth(mapping = aes(x = incscore, y = burglary_count), method = "lm")
+# List all those 'street' files (rather than outcomes or stop and search) for 2020 and 2019.
+list_2020 <- paste("data/", list.files("data", pattern = glob2rx("2020*street.csv"),  recursive=TRUE), sep = "")
+list_2019 <- paste("data/", list.files("data", pattern = glob2rx("2019*street.csv"),  recursive=TRUE), sep = "")
 
-# Scatter 3
-ggplot(data = burglary_df) +
-  geom_point(mapping = aes(x = incscore, y = burglary_count, colour = LAname))
+# Read in .csv files for each year.
+data_2020 <- lapply(list_2020, read_csv)
+data_2019 <- lapply(list_2019, read_csv)
 
-# Bar 1
-ggplot(data = burglary_df) +
-  geom_bar(mapping = aes(x = IMDdeci))
+# Bind each in to data frames. For now, we keep the years separate, but the structure is the same, so
+# you could combine if needed.
 
-# Bar 2
-ggplot(data = burglary_df) +
-  geom_bar(mapping = aes(x = LAname, fill = as.factor(IMDdeci)), position = "dodge") +
-  scale_fill_brewer(palette = "Spectral") +
-  theme_minimal() +
-  labs(x = NULL, fill = NULL,
-       title = "Deprivation by Local Authority in Greater Manchester",
-       subtitle = "Deciles calculated for England",
-       caption = "Copyright ONS 2019 data") +
-  theme(text = element_text(family = "mono", colour = "white"),
-        axis.text = element_text(colour = "white"),
-        plot.background = element_rect(fill = "black"),
-        panel.grid = element_line(colour = "snow"))
+full_data_2020 <- data_2020 %>% 
+  bind_rows() %>% 
+  clean_names() %>% # useful function to make column names uniform
+  mutate(year = "2020")
 
-# Load data
-monthly_df <- read_csv(file = "https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/gmp_monthly_2017.csv")
-burg_records_df <- read_csv("https://github.com/langtonhugh/data_viz_R_workshop/raw/master/data/burglary_records.csv")
-manc_sf <- st_read(dsn = "data/burglary_lsoa.shp")
-hex_sf <- st_read(dsn = "data/geogrid_manc.shp")
+full_data_2019 <- data_2019 %>% 
+  bind_rows() %>% 
+  clean_names() %>% 
+  mutate(year = "2019")
 
+# Example of aggregating by crime type, by lsoa, by month, and by year. The month column does tell us
+# the year but we group by year too just to keep the info. This example is for 2019 only.
+sub_data_agg_2019 <- full_data_2019 %>% 
+  drop_na(lsoa_code) %>%                             # Not necessarily a good idea!
+  group_by(crime_type, month, lsoa_code, year) %>%   # Grouping.
+  summarise(crime_count = n()) %>%                   # Each row is a crime, so we counts rows by groups.
+  ungroup() %>%                                      # Ungroup everything.
+  complete(crime_type, month, lsoa_code, year,
+           fill = list(crime_count = 0))             # Counts with 0 get filled in, rather than removed.
+
+# You now have 5837832 rows because it's 12 months, 14 crime types, and 34749 LSOA.
+34749*12*14

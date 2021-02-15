@@ -28,6 +28,8 @@ knitr::include_graphics("https://pbs.twimg.com/profile_images/866718054989930496
 
 s.langton@leeds.ac.uk
 
+www.samlangton.info
+
 ---
 
 ## Welcome
@@ -39,6 +41,8 @@ knitr::include_graphics("https://pbs.twimg.com/profile_images/866718054989930496
 @sh_langton
 
 s.langton@leeds.ac.uk
+
+www.samlangton.info
 
 <br>
 
